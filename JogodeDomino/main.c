@@ -4,7 +4,9 @@
 
 int main()
 {
-    ladospeca pecas[28];
+    pecaInfo pecas[28];
+    pecaInfo pecasembaralhadas[28];
     gerarpecas(pecas);
     imprimirpecas(pecas);
+    embaralharpecas(pecas);
 }

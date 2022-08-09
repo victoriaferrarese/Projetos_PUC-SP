@@ -1,9 +1,12 @@
 
-// as pecas de domino possuem dois lados (esquerdo e direito).
-typedef struct _ladospeca // _ladospeca = tipo (int, char, ...)
+.
+typedef struct _pecaInfo // _pecaInfo = tipo que contém informações de cada peça.
 {
-    int lado1;
-    int lado2;
-} ladospeca; // <typedef> <tipo> <apelido>
+    //cada peça de dominó possui dois números (esquerdo e direito).
+    int numero1;
+    int numero2;
+   //int status;
+
+} pecaInfo; // <typedef> <tipo> <apelido>
 
 

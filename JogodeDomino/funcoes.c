@@ -1,18 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "domino.h"
 
-void gerarpecas(ladospeca pecas[])
+void gerarpecas(pecaInfo pecas[])
 {
 
-   for(int i = 0; i < 28; i++) //contador de pecas
+   for(int i = 0; i < 28; i++) //contador de peças
     {
-        for(int j = 0; j <= 6; j++) //primeiro numero
+        for(int j = 0; j <= 6; j++) //primeiro número da peça
         {
-            for (int k = j; k <= 6; k++) //segundo numero
+            for (int k = j; k <= 6; k++) //segundo número da peça
             {
-                pecas[i].lado1 = j;
-                pecas[i].lado2 = k;
+                pecas[i].numero1 = j;
+                pecas[i].numero2 = k;
 
                 i++;
 
@@ -21,11 +22,28 @@ void gerarpecas(ladospeca pecas[])
     }
 
 }
-void imprimirpecas(ladospeca pecas[])
+void imprimirpecas(pecaInfo pecas[])
 {
-    for(int contador = 0; contador < 28; contador++)
+    for(int i = 0; i < 28; i++)
     {
-        printf("%d  ->  %d | %d\n",contador+1, pecas[contador].lado1,pecas[contador].lado2);
+        if (i < 9)
+        {
+            printf("#%d   ->  %d | %d\n",i+1, pecas[i].numero1,pecas[i].numero2);
+        }
+        else
+        {
+            printf("#%d  ->  %d | %d\n",i+1, pecas[i].numero1,pecas[i].numero2);
+        }
     }
 
+}
+void embaralharpecas(pecaInfo pecas[], pecaInfo pecasembaralhadas[])
+{
+    srand(time(NULL)); //gera um valor inicial para a função rand(),que nunca se repete (baseado no relogio do sistema)
+
+    for (int i = 0; i < 28; i++)
+    {
+        int numerosorteado = rand()%27; //gera um numero aleatorio entre 0 e 27.
+
+    }
 }
