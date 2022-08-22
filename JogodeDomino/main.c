@@ -1,15 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "domino.h"
+#include <time.h>
+#include "Model.h"
+#include "Controller.h"
+#include "View.h"
 
 int main()
 {
+    printf("DOMINO!\n\n");
+
     pecaInfo pecas[28];
-    gerarpecas(pecas);
-    imprimirPecas(pecas);
 
-    embaralharPecas(pecas);
-    imprimirPecasEmbaralhadas(pecas);
-
-    desembaralharPecas(pecas);
+    interface(pecas);
 }
+
+

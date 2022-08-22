@@ -1,0 +1,2 @@
+
+void interface(pecaInfo pecas[]);
