@@ -21,7 +21,7 @@ void interface(pecaInfo pecas[])
                 switch(opcaoJogar){ //Switch Menu Jogar
 
                     case 1: // Jogador vs Jogador 
-                        iniciarJogo(); //gerarPecas / embaralharPecas / distribuirPecas(em desenvolvimento)
+                        iniciarJogo(pecas); //gerarPecas / embaralharPecas / distribuirPecas(em desenvolvimento)
                         imprimirMenuPartida();
 
                         int opcaoPartida = opcaoSelecionadaMenuPartida(); // jogarPeca / comprarPeca / Menu Principal (break para o Menu Principal)
@@ -57,7 +57,6 @@ void interface(pecaInfo pecas[])
                         break;
                     
                 }
-                
                 break;
 
             case 2: //Retomar Partida

@@ -1,17 +1,29 @@
-typedef struct _pecaInfo // _pecaInfo = tipo que cont�m informa��es de cada peca.
+typedef struct _pecainfo // _pecaInfo = tipo que contem informacoes de cada peca.
 {
     //cada peca de domino possui dois numeros (esquerdo e direito).
-    int numero1;
-    int numero2;
-    int posicao;
-   //int status;
-
+    int numero1; //numero esquerdo da peca
+    int numero2; //numero direito da peca
+    int posicao; //posicao da peca no array pecas[]
+    char status; //onde está a peca
+    /*  
+    possiveis valores de status:
+    '1' -> jogador 1 
+    '2' -> jogador 2 
+    'M' -> mesa 
+    'P' -> pilha de compra 
+    */
 } pecaInfo; // <typedef> <tipo> <apelido>
+
+#define J1 '1'  
+#define J2 '2' 
+#define PILHA 'P'
+#define MESA 'M'
 
 int opcaoSelecionadaMenuPrincipal();
 int opcaoSelecionadaMenuJogar();
 int opcaoSelecionadaMenuPartida();
 void gerarPecas(pecaInfo pecas[]);
 void embaralharPecas(pecaInfo pecas[]);
+void distribuirPecas(pecaInfo pecas[]);
 void iniciarJogo(pecaInfo pecas[]);
 void desembaralharPecas(pecaInfo pecas[]);

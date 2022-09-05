@@ -63,10 +63,25 @@ void embaralharPecas(pecaInfo pecas[]){
     }
 }
 
+void distribuirPecas(pecaInfo pecas[]){
+
+    for (int i = 0; i < 14; i++)
+    {
+        pecas[(pecas[i].posicao)].status = J1;
+        pecas[(pecas[i].posicao+7)].status = J2;
+    }
+    
+    for (int j = 14; j < 28; j++)
+    {
+        pecas[(pecas[j].posicao)].status = PILHA;
+    }
+    
+}
+
 void iniciarJogo(pecaInfo pecas[]){
 
-    gerarPecas();
-    embaralharPecas();
+    gerarPecas(pecas);
+    embaralharPecas(pecas);
     //distribuirPecas(); 
 
 }

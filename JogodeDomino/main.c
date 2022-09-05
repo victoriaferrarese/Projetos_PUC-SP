@@ -5,8 +5,8 @@
 #include "Controller.h"
 #include "View.h"
 
-int main()
-{
+int main(){
+    
     printf("DOMINO!\n\n");
 
     pecaInfo pecas[28];
