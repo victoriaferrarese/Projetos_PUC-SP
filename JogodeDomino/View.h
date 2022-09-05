@@ -1,5 +1,8 @@
 void imprimirMenuPrincipal();
+int opcaoMenuPrincipal();
 void imprimirMenuJogar();
-void imprimirMenuPartida()
+int opcaoMenuJogar();
+void imprimirMenuPartida();
+int opcaoMenuPartida();
 void imprimirPecas(pecaInfo pecas[]);
 void imprimirPecasEmbaralhadas(pecaInfo pecas[]);

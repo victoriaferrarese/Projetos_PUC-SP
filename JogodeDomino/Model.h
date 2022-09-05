@@ -19,9 +19,6 @@ typedef struct _pecainfo // _pecaInfo = tipo que contem informacoes de cada peca
 #define PILHA 'P'
 #define MESA 'M'
 
-int opcaoSelecionadaMenuPrincipal();
-int opcaoSelecionadaMenuJogar();
-int opcaoSelecionadaMenuPartida();
 void gerarPecas(pecaInfo pecas[]);
 void embaralharPecas(pecaInfo pecas[]);
 void distribuirPecas(pecaInfo pecas[]);

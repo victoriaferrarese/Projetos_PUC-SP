@@ -5,58 +5,18 @@
 #include "Controller.h"
 #include "View.h"
 
-void interface(pecaInfo pecas[])
-{
+void MenuPrincipal(pecaInfo pecas[]){
+
     int sentinela = 0;
 
     do{
         imprimirMenuPrincipal();
-        int opcao = opcaoSelecionadaMenuPrincipal(); //Jogar / Retomar Partida / Salvar Partida / Carregar Partida Salva / Regras / Sair 
+        int opcaoPrincipal = opcaoMenuPrincipal();
 
-        switch(opcao){ //switch Menu Principal
+        switch(opcaoPrincipal){ //switch Menu Principal
             
-            case 1: //Jogar
-                int opcaoJogar = opcaoSelecionadaMenuJogar(); //Jogador vs Jogador / Jogador vs IA
-
-                switch(opcaoJogar){ //Switch Menu Jogar
-
-                    case 1: // Jogador vs Jogador 
-                        iniciarJogo(pecas); //gerarPecas / embaralharPecas / distribuirPecas(em desenvolvimento)
-                        imprimirMenuPartida();
-
-                        int opcaoPartida = opcaoSelecionadaMenuPartida(); // jogarPeca / comprarPeca / Menu Principal (break para o Menu Principal)
-
-                            switch(opcaoPartida){ //Switch Menu Partida
-
-                                case 1: //Jogar Peca
-                                    break;
-
-                                case 2: // Comprar Peca
-                                    break;
-                                
-                                case 3: //Voltar ao Menu Principal
-                                    break;
-
-                                default:
-                                    break;
-                            }                        
-                        /*
-                        imprimirPecas(pecas);
-                        imprimirPecasEmbaralhadas(pecas);
-                        desembaralharPecas(pecas);
-                        imprimirPecas(pecas);
-                        */
-
-                        break;
-                    case 2: // Jogador vs IA 
-                         
-                         break;
-                    
-                    default:
-
-                        break;
-                    
-                }
+            case 1: ;//Jogar
+                MenuJogar(pecas);
                 break;
 
             case 2: //Retomar Partida
@@ -85,5 +45,53 @@ void interface(pecaInfo pecas[])
         }
 
     }while(sentinela != 1);
+
+}
+
+void MenuJogar(pecaInfo pecas[]){
+
+    int opcaoJogar = opcaoMenuJogar();
+
+    switch(opcaoJogar){ //Switch Menu Jogar
+
+        case 1: // Jogador vs Jogador 
+            iniciarJogo(pecas); //gerarPecas / embaralharPecas / distribuirPecas(em desenvolvimento)
+            imprimirMenuPartida();
+            MenuPartida(pecas);
+
+            break;
+        case 2: // Jogador vs IA 
+            
+                break;
+    
+        default:
+
+            break;
+    }
+}
+void MenuPartida(pecaInfo pecas[]){
+
+    int opcaoPartida = opcaoMenuPartida();
+
+    switch(opcaoPartida){ //Switch Menu Partida
+
+                case 1: //Jogar Peca
+                        break;
+
+                    case 2: // Comprar Peca
+                        break;
+                
+                    case 3: //Voltar ao Menu Principal
+                        break;
+
+                    default:
+                        break;
+             }                        
+        /*
+        imprimirPecas(pecas);
+        imprimirPecasEmbaralhadas(pecas);
+        desembaralharPecas(pecas);
+        imprimirPecas(pecas);
+        */
 
 }

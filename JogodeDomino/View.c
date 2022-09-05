@@ -18,6 +18,13 @@ void imprimirMenuPrincipal(){
     printf("Digite a opcao desejada: ");                  
 }
 
+int opcaoMenuPrincipal(){ //retorna a opcao selecionada do menu principal
+
+    int opcaoSelecionadaPrincipal;
+    scanf("%d",&opcaoSelecionadaPrincipal);
+    return opcaoSelecionadaPrincipal;
+}
+
 void imprimirMenuJogar(){
 
     printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
@@ -28,6 +35,13 @@ void imprimirMenuJogar(){
 
 }
 
+int opcaoMenuJogar(){//retorna a opcao selecionada do menu Jogar
+
+    int opcaoSelecionadaJogar;
+    scanf("%d",&opcaoSelecionadaJogar);
+    return opcaoSelecionadaJogar;
+}
+
 void imprimirMenuPartida(){
     //printf("Vez do Jogador %c", Jogador); //indica qual jogador jogara
     printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
@@ -36,6 +50,13 @@ void imprimirMenuPartida(){
     printf("[3]Voltar ao Menu Principal");  //Menu Principal
     printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     
+}
+
+int opcaoMenuPartida(){ //retorna a opcao selecionada do Menu Partida
+
+    int opcaoSelecionadaPartida;
+    scanf("%d",&opcaoSelecionadaPartida);
+    return opcaoSelecionadaPartida;
 }
 
 void imprimirPecas(pecaInfo pecas[]){
