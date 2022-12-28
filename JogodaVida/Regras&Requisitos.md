@@ -71,7 +71,7 @@ O mapa (ou mundo) que representa a estrutura matricial dos indivíduos deverá s
 usando tipo agregado de homogêneo (matriz) e cada célula deverá ser devidamente representada
 com as informações necessárias para o contexto do problema. Sugere-se criar duas matrizes 
 bidimensionais: uma original e outra auxiliar para representar todas as células.
-###Interface com o Usuário
+### Interface com o Usuário
 A interface com o usuário deverá ser no modo texto (terminal).
-###Simuladores OnLine do Jogo da Vida
+### Simuladores OnLine do Jogo da Vida
 * https://bitstorm.org/gameoflife/
