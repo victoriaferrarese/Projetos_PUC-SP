@@ -4,9 +4,6 @@
 #include "view.h"
 #include "controller.h"
 
-void menu(){
-    imprimirAbertura();
-    imprimirTamanhoMundo();
-    receberTamanhoMundo();
-
+void main(){
+    menu();
 }

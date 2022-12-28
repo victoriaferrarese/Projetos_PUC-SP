@@ -1,0 +1,3 @@
+
+void imprimirAbertura();
+void imprimirTamanhoMundo();
