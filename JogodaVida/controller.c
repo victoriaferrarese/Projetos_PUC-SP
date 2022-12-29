@@ -5,8 +5,14 @@
 #include "controller.h"
 
 void menu(){
+    
+    MUNDO m;
+
     imprimirAbertura();
     imprimirTamanhoMundo();
-    receberTamanhoMundo();
+    receberTamanhoMundo(&m);
+    alocarMundo(&m);
+    iniciarMundo(&m);
+    liberarMundo(&m);
 
 }
