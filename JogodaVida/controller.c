@@ -5,14 +5,14 @@
 #include "controller.h"
 
 void menu(){
-    
+
     MUNDO m;
 
-    imprimirAbertura();
-    imprimirTamanhoMundo();
-    receberTamanhoMundo(&m);
+    do{
+        receberTamanhoMundo(&m);
+
+    }while(m.linhas < MIN || m.linhas > MAX || m.colunas < MIN || m.colunas > MAX);
+
     alocarMundo(&m);
     iniciarMundo(&m);
-    liberarMundo(&m);
-
 }

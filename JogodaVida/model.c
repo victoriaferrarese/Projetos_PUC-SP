@@ -4,16 +4,20 @@
 #include "view.h"
 #include "controller.h"
 
+void abertura(MUNDO* m){
+
+    alocarMundo(m);
+    iniciarMundo(m);
+
+}
+
 void receberTamanhoMundo(MUNDO* m){
 
-    do{
     printf("\nLinhas: ");
     scanf(" %d", &m->linhas);
 
     printf("\nColunas: ");
     scanf(" %d", &m->colunas);
-
-    }while(10>m->linhas>60 && 10>m->colunas>60);
 
 }
 
@@ -24,6 +28,7 @@ void alocarMundo(MUNDO* m){
     for(int i = 0; i < m->linhas; i++){
         m->matriz[i] = malloc(sizeof(char) * m->colunas);
     }
+    
 }
 
 void liberarMundo(MUNDO* m){
@@ -36,13 +41,7 @@ void liberarMundo(MUNDO* m){
 
 void iniciarMundo(MUNDO* m){
 
-    for(int i = 0; i < m->colunas; i++){
-        m->matriz[0][i] = i;
-    }
-
-     for(int j = 0; j < m->linhas; j++){
-        m->matriz[j][0] = j;
-    }
+    
 }
 
 
