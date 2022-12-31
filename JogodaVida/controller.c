@@ -15,4 +15,5 @@ void menu(){
 
     alocarMundo(&m);
     iniciarMundo(&m);
+    liberarMundo(&m);
 }

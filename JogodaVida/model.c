@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "model.h"
 #include "view.h"
 #include "controller.h"
@@ -10,7 +11,7 @@ void abertura(MUNDO* m){
     iniciarMundo(m);
 
 }
-
+//
 void receberTamanhoMundo(MUNDO* m){
 
     printf("\nLinhas: ");
@@ -41,8 +42,17 @@ void liberarMundo(MUNDO* m){
 
 void iniciarMundo(MUNDO* m){
 
-    
+    //printf("preenchido");
+    for(int i = 0; i <= m->linhas; i++){
+        for(int j = 0; j <= m->colunas; j++){
+            m->matriz[i][j] = 0;
+        }
+    }
+    printf("preenchido");
+    printf("%d", m->matriz[0][0]);
+
 }
+
 
 
 

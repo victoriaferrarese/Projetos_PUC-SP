@@ -2,7 +2,7 @@
 #define MIN 10
 
 struct mapa{
-    char** matriz;
+    int* matriz;
     int linhas;
     int colunas;
 };
