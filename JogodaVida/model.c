@@ -5,13 +5,7 @@
 #include "view.h"
 #include "controller.h"
 
-void abertura(MUNDO* m){
-
-    alocarMundo(m);
-    iniciarMundo(m);
-
-}
-//
+//recebendo o tamanho da matriz mundo do usuario
 void receberTamanhoMundo(MUNDO* m){
 
     printf("\nLinhas: ");
@@ -22,35 +16,32 @@ void receberTamanhoMundo(MUNDO* m){
 
 }
 
-void alocarMundo(MUNDO* m){
-    
-    m->matriz = malloc(sizeof(char*) * m->linhas);
+//preenchendo a matriz com zeros
+void inicializarMundo(MUNDO* m){
 
-    for(int i = 0; i < m->linhas; i++){
-        m->matriz[i] = malloc(sizeof(char) * m->colunas);
-    }
-    
-}
-
-void liberarMundo(MUNDO* m){
-    
-    for(int i = 0; i < m->linhas; i++){
-        free(m->matriz[i]);
-    }
-    free(m->matriz);
-}
-
-void iniciarMundo(MUNDO* m){
-
-    //printf("preenchido");
-    for(int i = 0; i <= m->linhas; i++){
-        for(int j = 0; j <= m->colunas; j++){
+    for(int i = 0; i < MAX; i++){
+        for(int j = 1; j < MAX; j++){
             m->matriz[i][j] = 0;
         }
     }
-    printf("preenchido");
-    printf("%d", m->matriz[0][0]);
 
+}
+
+void imprimirMundo(MUNDO* m){
+
+    printf(" ");
+    for(int k = 0; k < m->colunas; k++){
+            printf(" %d ", k);
+           
+    }printf("\n");
+
+    for(int i = 0; i < m->linhas; i++){
+        printf("%d ", i);
+        for(int j = 0; j < m->colunas; j++){
+           printf("%d  ", m->matriz[i][j]);
+
+        }printf("\n");
+    }
 }
 
 

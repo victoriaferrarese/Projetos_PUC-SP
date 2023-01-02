@@ -13,7 +13,7 @@ void menu(){
 
     }while(m.linhas < MIN || m.linhas > MAX || m.colunas < MIN || m.colunas > MAX);
 
-    alocarMundo(&m);
-    iniciarMundo(&m);
-    liberarMundo(&m);
+    inicializarMundo(&m);
+    imprimirMundo(&m);
+    
 }
