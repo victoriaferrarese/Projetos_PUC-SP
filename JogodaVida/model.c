@@ -8,10 +8,10 @@
 //recebendo o tamanho da matriz mundo do usuario
 void receberTamanhoMundo(MUNDO* m){
 
-    printf("\nLinhas: ");
+    receberLinha();
     scanf(" %d", &m->linhas);
 
-    printf("\nColunas: ");
+    receberColuna();
     scanf(" %d", &m->colunas);
 
 }
@@ -44,6 +44,39 @@ void imprimirMundo(MUNDO* m){
     }
 }
 
+void definirSeresVivos(MUNDO* m){
 
+    int qtdSerVivo;
+    escolherQtdSeresVivos();
+    scanf("%d", &qtdSerVivo);
+
+    definirPosicaoSeresVivos(m,qtdSerVivo);
+
+}
+
+int posicaoValida(MUNDO* m, int x, int y){
+    return (x <= m->linhas && y <= m->colunas);
+}
+
+void definirPosicaoSeresVivos(MUNDO* m, int quantidade){
+
+    escolherPosicaoSeresVivos();
+
+    for(int i = 1; i < quantidade; i++){
+        int linha;
+        int coluna;
+
+        printf("Ser Vivo %d:\n ", i);
+        receberLinha();
+        scanf("%d", &linha);
+        receberColuna();
+        scanf("%d", &coluna);
+
+        if(posicaoValida(m, linha, coluna)) 
+            m->matriz[linha][coluna] = 1;
+        else
+            imprimirPosicaoInvalida();
+    }
+}
 
 
