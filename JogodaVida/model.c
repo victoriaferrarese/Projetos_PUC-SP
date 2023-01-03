@@ -44,16 +44,18 @@ void imprimirMundo(MUNDO* m){
     }
 }
 
+//recebendo a qnt de seres vivos e executando a funcao definirPosicaoSeresVivos()
 void definirSeresVivos(MUNDO* m){
 
     int qtdSerVivo;
     escolherQtdSeresVivos();
     scanf("%d", &qtdSerVivo);
 
-    definirPosicaoSeresVivos(m,qtdSerVivo);
+    definirPosicaoSeresVivos(m, qtdSerVivo);
 
 }
 
+//verificando se a posicao desejada para inserir o ser vivo existe 
 int posicaoValida(MUNDO* m, int x, int y){
     return (x <= m->linhas && y <= m->colunas);
 }
@@ -61,17 +63,20 @@ int posicaoValida(MUNDO* m, int x, int y){
 void definirPosicaoSeresVivos(MUNDO* m, int quantidade){
 
     escolherPosicaoSeresVivos();
+    int numero = 1;
 
     for(int i = 1; i < quantidade; i++){
+
         int linha;
         int coluna;
 
         printf("Ser Vivo %d:\n ", i);
+        
         receberLinha();
         scanf("%d", &linha);
         receberColuna();
         scanf("%d", &coluna);
-
+    
         if(posicaoValida(m, linha, coluna)) 
             m->matriz[linha][coluna] = 1;
         else

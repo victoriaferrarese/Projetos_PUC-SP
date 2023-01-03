@@ -16,5 +16,6 @@ void menu(){
     inicializarMundo(&m);
     imprimirMundo(&m);
     definirSeresVivos(&m);
+    imprimirMundo(&m);
     
 }
