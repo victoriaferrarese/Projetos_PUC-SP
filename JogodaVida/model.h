@@ -5,7 +5,7 @@
 #define VAZIO '0'
 
 struct mapa{
-    int** matriz[MAX][MAX];
+    int matriz[MAX][MAX];
     int linhas;
     int colunas;
 };

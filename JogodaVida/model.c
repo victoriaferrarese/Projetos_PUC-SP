@@ -63,15 +63,14 @@ int posicaoValida(MUNDO* m, int x, int y){
 void definirPosicaoSeresVivos(MUNDO* m, int quantidade){
 
     escolherPosicaoSeresVivos();
-    int numero = 1;
 
-    for(int i = 1; i < quantidade; i++){
+    for(int i = 1; i <= quantidade; i++){
 
         int linha;
         int coluna;
 
         printf("Ser Vivo %d:\n ", i);
-        
+
         receberLinha();
         scanf("%d", &linha);
         receberColuna();
