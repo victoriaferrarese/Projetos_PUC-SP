@@ -18,3 +18,5 @@ void imprimirMundo(MUNDO* m);
 void definirSeresVivos(MUNDO* m);
 int posicaoValida(MUNDO* m, int x, int y);
 void definirPosicaoSeresVivos(MUNDO* m, int qtdSerVivo);
+void percorrerMundo(MUNDO* m);
+int contarVizinhos(MUNDO* m, int x, int y);
