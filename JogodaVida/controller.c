@@ -6,16 +6,46 @@
 
 void menu(){
 
+    int fimDeJogo = 0;
+
+    imprimirAbertura();
+
     MUNDO m;
 
+    int menu = receberOpcao();
+
     do{
-        receberTamanhoMundo(&m);
+    switch (menu){
 
-    }while(m.linhas < MIN || m.linhas > MAX || m.colunas < MIN || m.colunas > MAX);
+        //Jogar
+        case 1:
 
-    inicializarMundo(&m);
-    imprimirMundo(&m);
-    definirSeresVivos(&m);
-    imprimirMundo(&m);
+            do{
+
+            receberTamanhoMundo(&m);
+
+            }while(m.linhas < MIN || m.linhas > MAX || m.colunas < MIN || m.colunas > MAX);
+
+            inicializarMundo(&m);
+            definirSeresVivos(&m);
+            imprimirMundo(&m);
+            break;
+
+        //Limpar mundo
+        case 2: 
+
+            inicializarMundo(&m);
+            imprimirMundo(&m);
+            break;
+    
+        default:
+
+            opcaoInvalida();
+            break;
+    }
+    
+    menu = receberOpcao();
+
+    }while(!fimDeJogo);
     
 }

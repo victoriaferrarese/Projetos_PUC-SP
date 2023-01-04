@@ -7,21 +7,30 @@
 void imprimirAbertura(){
     printf("\n\nBEM-VINDO(A) AO JOGO DA VIDA!!\n\n");
 }
-void receberLinha(){
-    printf("\nLinha: ");
+void imprimirMenu(){
+    printf("\nMENU:\n");
+    printf("[1] Jogar\n");
+    printf("[2] Limpar mapa\n");
+    printf("\nSelecione a opcao que deseja: ");
 }
-void receberColuna(){
-    printf("\nColuna: ");
+void opcaoInvalida(){
+    printf("\n Opcao invalida!!\n");
 }
 void escolherTamanhoMundo(){
-    printf("O tamanho do mundo deve ser entre 10 e 60. Escolha o tamanho desse mundo. \n");
+    printf("\nO tamanho do mundo deve ser entre 10 e 60. Escolha o tamanho desse mundo. \n");
+}
+void receberLinha(){
+    printf("Linha: ");
+}
+void receberColuna(){
+    printf("Coluna: ");
 }
 void escolherQtdSeresVivos(){
-    printf("Quantos seres vivos deseja colocar no mundo?");
+    printf("\nQuantos seres vivos deseja colocar no mundo? ");
 }
 void escolherPosicaoSeresVivos(){
-    printf("Digite a coordenada de cada ser vivo que ira colocar no mundo\n");
+    printf("\nDigite a coordenada de cada ser vivo que ira colocar no mundo\n");
 }
 void imprimirPosicaoInvalida(){
-    printf("Posicao invalida");
+    printf("Posicao invalida\n");
 }

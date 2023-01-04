@@ -1,5 +1,7 @@
 
 void imprimirAbertura();
+void imprimirMenu();
+void opcaoInvalida();
 void receberLinha();
 void receberColuna();
 void escolherTamanhoMundo();

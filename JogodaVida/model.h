@@ -11,6 +11,7 @@ struct mapa{
 };
 typedef struct mapa MUNDO;
 
+int receberOpcao();
 void receberTamanhoMundo(MUNDO* m);
 void inicializarMundo(MUNDO* m);
 void imprimirMundo(MUNDO* m);
