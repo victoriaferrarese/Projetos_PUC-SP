@@ -36,13 +36,14 @@ void menu(){
         case 2: 
 
             inicializarMundo(&m);
-            imprimirMundo(&m);
+            imprimirMundo(&auxiliar);
             break;
 
         //simular 1 geracao
         case 3: 
 
             simularGeracao(&m, &auxiliar);
+            imprimirMundo(&m);
             break;
 
         default:

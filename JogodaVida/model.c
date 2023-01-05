@@ -102,6 +102,7 @@ void definirPosicaoSeresVivos(MUNDO* m, int quantidade){
     }while(i <= quantidade);
 }
 
+//copiando o mundo m em outro mundo
 void inicializarMundoAuxiliar(MUNDO* origem, MUNDO* destino){
 
     destino->linhas = origem->linhas;
@@ -115,8 +116,9 @@ void inicializarMundoAuxiliar(MUNDO* origem, MUNDO* destino){
     }
 }
 
+//lendo o mundo m e atualizando o mundo auxiliar com a proxima geracao 
 void percorrerMundo(MUNDO* m, MUNDO* auxiliar){
-
+    
     int linha;
     int coluna;
     int vizinhos;
@@ -126,14 +128,15 @@ void percorrerMundo(MUNDO* m, MUNDO* auxiliar){
             linha = i;
             coluna = j;
             vizinhos = contarVizinhos(m, linha,coluna);
-            criarMundoAuxiliar(m, auxiliar, vizinhos, linha, coluna);
+            atualizarGeracao(m, auxiliar, vizinhos, linha, coluna);
         }
     }
 
 }
-//Contando a quantidade de seres vivos vizinhos 
-int contarVizinhos(MUNDO* m, int x, int y){
 
+//Contando a quantidade de seres vivos vizinhos (verificando todas as 8 celulas vizinhas do ser vivo )
+int contarVizinhos(MUNDO* m, int x, int y){
+    
     int contVizinhos = 0;
 
     if(posicaoValida(m, x-1, y-1)){
@@ -172,42 +175,50 @@ int contarVizinhos(MUNDO* m, int x, int y){
     return contVizinhos;
 }
 
-//
-void criarMundoAuxiliar(MUNDO* m, MUNDO* auxiliar, int vizinhos, int x, int y){
-
+//atualizando o mundo auxiliar com a proxima geracao de seres vivos 
+void atualizarGeracao(MUNDO* m, MUNDO* auxiliar, int vizinhos, int x, int y){
+    
+    //Reproducao: um ser vivo nasce numa celula vazia se essa celular vazia tiver exatamente 3 vizinhos.
     if(m->matriz[x][y] == VAZIO){
         if(vizinhos == 3)
             auxiliar->matriz[x][y] = SER_VIVO;
     }
+
+    //Sobrevivencia: Um ser vivo que tenha 2 ou 3 vizinhos sobrevive para a geracao seguinte.
     if(m->matriz[x][y] == SER_VIVO){
         if(vizinhos == 2 || vizinhos == 3 )
             auxiliar->matriz[x][y] = SER_VIVO;
     }
+
+    //Morte por falta de comida: Um ser vivo com 4 ou mais vizinhos morre de fome.
     if(m->matriz[x][y] == SER_VIVO){
         if(vizinhos >= 4)
             auxiliar->matriz[x][y] = VAZIO;
     }
+    
+    //Morte por solidao: Um ser vivo com 0 ou 1 vizinho morre de solidao.
     if(m->matriz[x][y] == SER_VIVO){
         if(vizinhos == 0 || vizinhos == 1)
             auxiliar->matriz[x][y] = VAZIO;
     }
 }
 
+//simula a proxima geracao de seres vivos no mundo auxiliar. Em seguida passa o mundo auxiliar para o mundo m 
 void simularGeracao(MUNDO* m, MUNDO* auxiliar){
-
+    
     percorrerMundo(m, auxiliar);
 
+    //o mundo m recebe a geracao atualizada dos seres vivos
     for(int i = 0; i < m->linhas; i ++){
         for(int j = 0; j < m->colunas; j++){
                 auxiliar->matriz[i][j] = m->matriz[i][j];
         }
     }
-
 }
 /* A FAZER:
-- Criar um mapa auxiliar para atualizar a cada geracao nova
-- terminar as funcoes percorrerMundo, contarVizinhos e simularGeracao
-- declarar simularGeracao
+- Resolver bug : mundo nao e alterado apos a geracao ser simulada 
+- 
+- 
 */
 
 
