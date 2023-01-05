@@ -11,6 +11,7 @@ void menu(){
     imprimirAbertura();
 
     MUNDO m;
+    MUNDO auxiliar;
 
     int menu = receberOpcao();
 
@@ -37,7 +38,13 @@ void menu(){
             inicializarMundo(&m);
             imprimirMundo(&m);
             break;
-    
+
+        //simular 1 geracao
+        case 3: 
+
+            simularGeracao(&m, &auxiliar);
+            break;
+
         default:
 
             opcaoInvalida();

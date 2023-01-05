@@ -11,6 +11,7 @@ void imprimirMenu(){
     printf("\nMENU:\n");
     printf("[1] Jogar\n");
     printf("[2] Limpar mapa\n");
+    printf("[3] simular 1 geracao\n");
     printf("\nSelecione a opcao que deseja: ");
 }
 void opcaoInvalida(){
