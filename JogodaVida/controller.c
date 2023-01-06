@@ -43,7 +43,8 @@ void menu(){
         case 3: 
 
             simularGeracao(&m, &auxiliar);
-            imprimirMundo(&m);
+            imprimirMundo(&auxiliar);
+            
             break;
 
         default:

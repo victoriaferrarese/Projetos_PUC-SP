@@ -20,6 +20,6 @@ int posicaoValida(MUNDO* m, int x, int y);
 void definirPosicaoSeresVivos(MUNDO* m, int qtdSerVivo);
 void percorrerMundo(MUNDO* m, MUNDO* auxiliar);
 int contarVizinhos(MUNDO* m, int x, int y);
-void inicializarMundoAuxiliar(MUNDO* origem, MUNDO* destino);
+void inicializarMundoAuxiliar(MUNDO* destino, MUNDO* m);
 void atualizarGeracao(MUNDO* m, MUNDO* auxiliar, int vizinhos, int x, int y);
 void simularGeracao(MUNDO* m, MUNDO* auxiliar);
