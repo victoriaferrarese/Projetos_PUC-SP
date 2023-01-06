@@ -15,6 +15,8 @@ void menu(){
 
     int menu = receberOpcao();
 
+    int geracoes;
+
     do{
     switch (menu){
 
@@ -40,16 +42,22 @@ void menu(){
             break;
 
         //simular 1 geracao
-        case 3: 
+        case 3:
+
+            receberQtdGeracoes(geracoes);
+
+            do{
 
             simularGeracao(&m, &auxiliar);
-            imprimirMundo(&auxiliar);
-            
+            geracoes--;
+
+            }while(geracoes > 0);
+
             break;
 
         default:
 
-            opcaoInvalida();
+            imprimirPosicaoInvalida();
             break;
     }
     

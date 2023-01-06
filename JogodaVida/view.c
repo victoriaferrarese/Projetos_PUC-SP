@@ -11,27 +11,30 @@ void imprimirMenu(){
     printf("\nMENU:\n");
     printf("[1] Jogar\n");
     printf("[2] Limpar mapa\n");
-    printf("[3] simular 1 geracao\n");
+    printf("[3] simular geracao\n");
     printf("\nSelecione a opcao que deseja: ");
 }
-void opcaoInvalida(){
-    printf("\n Opcao invalida!!\n");
+void imprimirOpcaoInvalida(){
+    printf("\nOpcao invalida!!\n");
 }
-void escolherTamanhoMundo(){
+void imprimirEscolherTamanhoMundo(){
     printf("\nO tamanho do mundo deve ser entre 10 e 60. Escolha o tamanho desse mundo. \n");
 }
-void receberLinha(){
+void imprimirReceberLinha(){
     printf("Linha: ");
 }
-void receberColuna(){
+void imprimirReceberColuna(){
     printf("Coluna: ");
 }
-void escolherQtdSeresVivos(){
+void imprimirEscolherQtdSeresVivos(){
     printf("\nQuantos seres vivos deseja colocar no mundo? ");
 }
-void escolherPosicaoSeresVivos(){
+void imprimirEscolherPosicaoSeresVivos(){
     printf("\nDigite a coordenada de cada ser vivo que ira colocar no mundo\n");
 }
 void imprimirPosicaoInvalida(){
-    printf("Posicao invalida\n");
+    printf("\nPosicao invalida\n");
+}
+void imprimirEscolherQtdGeracoes(){
+    printf("Determine a quantidade de geracoes que deseja simular");
 }

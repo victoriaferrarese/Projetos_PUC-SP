@@ -19,12 +19,12 @@ int receberOpcao(){
 //recebendo o tamanho da matriz mundo do usuario
 void receberTamanhoMundo(MUNDO* m){
 
-    escolherTamanhoMundo();
+    imprimirEscolherTamanhoMundo();
 
-    receberLinha();
+    imprimirReceberLinha();
     scanf(" %d", &m->linhas);
 
-    receberColuna();
+    imprimirReceberColuna();
     scanf(" %d", &m->colunas);
 
 }
@@ -66,7 +66,7 @@ void definirSeresVivos(MUNDO* m){
 
     int qtdSerVivo;
 
-    escolherQtdSeresVivos();
+    imprimirEscolherQtdSeresVivos();
     scanf("%d", &qtdSerVivo);
 
     definirPosicaoSeresVivos(m, qtdSerVivo);
@@ -81,7 +81,7 @@ int posicaoValida(MUNDO* m, int x, int y){
 //Colocando os seres vivos nas posicoes escolhidas
 void definirPosicaoSeresVivos(MUNDO* m, int quantidade){
 
-    escolherPosicaoSeresVivos();
+    imprimirEscolherPosicaoSeresVivos();
 
     int i = 1;
     do{
@@ -90,10 +90,10 @@ void definirPosicaoSeresVivos(MUNDO* m, int quantidade){
 
         printf("\nSer Vivo %d:\n", i);
 
-        receberLinha();
+        imprimirReceberLinha();
         scanf("%d", &linha);
 
-        receberColuna();
+        imprimirReceberColuna();
         scanf("%d", &coluna);
     
         if(posicaoValida(m, linha, coluna)){ 
@@ -102,21 +102,24 @@ void definirPosicaoSeresVivos(MUNDO* m, int quantidade){
         }else
             imprimirPosicaoInvalida();
 
-    }while(i <= quantidade);
+    }while(i <= quantidade && i != 0);
 }
 
-//simula a proxima geracao de seres vivos no mundo auxiliar. Em seguida passa o mundo auxiliar para o mundo m 
-void simularGeracao(MUNDO* m, MUNDO* auxiliar){
+void receberQtdGeracoes(int geracoes){
 
-    inicializarMundoAuxiliar(m, auxiliar);
-    percorrerMundo(m, auxiliar);
+    imprimirEscolherQtdGeracoes();
+    scanf(" %d",geracoes);
     
-    //o mundo m recebe a geracao atualizada dos seres vivos
-    /*for(int i = 0; i < m->linhas; i ++){
-        for(int j = 0; j < m->colunas; j++){
-                auxiliar->matriz[i][j] = m->matriz[i][j];
-        }
-    }*/
+}
+
+//simula e imprime a proxima geracao de seres vivos 
+void simularGeracao(MUNDO* m, MUNDO* auxiliar){
+    
+    inicializarMundoAuxiliar(auxiliar, m);
+    percorrerMundo(m, auxiliar);
+    atualizarMundo(m, auxiliar);
+    imprimirMundo(m);
+
 }
 
 //preenchendo o mundo auxiliar com os espacos vazios assim como o mundo m 
@@ -129,37 +132,17 @@ void inicializarMundoAuxiliar(MUNDO* auxiliar, MUNDO* m){
 
 }
 
-/*
-//copiando o mundo m em outro mundo
-void inicializarMundoAuxiliar(MUNDO* destino){
-    //printf("\ninicializado\n");
-    destino->linhas = origem->linhas;
-    destino->colunas = origem->colunas;
-
- 
-    //fazendo uma copia do mundo origem e mandando para o mundo destino
-    for(int i = 0; i < destino->linhas; i ++){
-        for(int j = 0; j < destino->colunas; j++){
-                destino->matriz[i][j] = origem->matriz[i][j];
-        }
-    }
-   // printf("\nmundo auxiliar criado:\n");
-    
-}*/
-
 //lendo o mundo m e atualizando o mundo auxiliar com a proxima geracao 
 void percorrerMundo(MUNDO* m, MUNDO* auxiliar){
-    
-    int vizinhos = 0;
 
+    int vizinhos = 0;
+    
     for(int i = 0; i < m->linhas; i++){
         for(int j = 0; j < m->colunas; j++){
-            printf("percorrendo: [%d %d]");
             vizinhos = contarVizinhos(m, i, j);
-            atualizarGeracao(m, auxiliar, vizinhos, i, j);
+            gerarProximaGeracao(m, auxiliar, vizinhos, i, j);
         }
     }
-
 }
 
 //Contando a quantidade de seres vivos vizinhos (verificando todas as 8 celulas vizinhas do ser vivo )
@@ -204,7 +187,7 @@ int contarVizinhos(MUNDO* m, int x, int y){
 }
 
 //atualizando o mundo auxiliar com a proxima geracao de seres vivos 
-void atualizarGeracao(MUNDO* m, MUNDO* auxiliar, int vizinhos, int x, int y){
+void gerarProximaGeracao(MUNDO* m, MUNDO* auxiliar, int vizinhos, int x, int y){
     
     //Reproducao: um ser vivo nasce numa celula vazia se essa celular vazia tiver exatamente 3 vizinhos.
     if(m->matriz[x][y] == VAZIO){
@@ -231,10 +214,19 @@ void atualizarGeracao(MUNDO* m, MUNDO* auxiliar, int vizinhos, int x, int y){
     }
 }
 
+//O mundo m recebe a geracao atualizada dos seres vivos (que esta no mundo auxiliar)
+void atualizarMundo(MUNDO* m, MUNDO* auxiliar){
+    
+    for(int i = 0; i < m->linhas; i ++){
+        for(int j = 0; j < m->colunas; j++){
+                m->matriz[i][j] = auxiliar->matriz[i][j];
+        }
+    }
+}
+
 /* A FAZER:
-- Resolver bug : mundo nao e alterado apos a geracao ser simulada 
-- 
-- 
+- Resolver erro de logica: ao digitar 0 na escolha da qtd de seres vivos a serem colocados no mundo
+- Resolver bug : loop infinito na opcao 3 do menu
 */
 
 
