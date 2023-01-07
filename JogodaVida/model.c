@@ -81,6 +81,12 @@ int posicaoValida(MUNDO* m, int x, int y){
 //Colocando os seres vivos nas posicoes escolhidas
 void definirPosicaoSeresVivos(MUNDO* m, int quantidade){
 
+    if(quantidade == 0){
+        imprimirOpcaoInvalida();
+        definirSeresVivos(m);
+        
+    }
+
     imprimirEscolherPosicaoSeresVivos();
 
     int i = 1;
@@ -102,7 +108,7 @@ void definirPosicaoSeresVivos(MUNDO* m, int quantidade){
         }else
             imprimirPosicaoInvalida();
 
-    }while(i <= quantidade && i != 0);
+    }while(i < quantidade);
 }
 
 int receberQtdGeracoes(){
@@ -230,7 +236,7 @@ void atualizarMundo(MUNDO* m, MUNDO* auxiliar){
 }
 
 /* A FAZER:
-- Resolver erro de logica: ao digitar 0 na escolha da qtd de seres vivos a serem colocados no mundo
+- 
 - 
 */
 
