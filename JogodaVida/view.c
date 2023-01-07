@@ -18,7 +18,7 @@ void imprimirOpcaoInvalida(){
     printf("\nOpcao invalida!!\n");
 }
 void imprimirEscolherTamanhoMundo(){
-    printf("\nO tamanho do mundo deve ser entre 10 e 60. Escolha o tamanho desse mundo. \n");
+    printf("\nO tamanho do mundo deve ser entre 10 e 60. Escolha o tamanho desse mundo: \n");
 }
 void imprimirReceberLinha(){
     printf("Linha: ");
@@ -36,5 +36,5 @@ void imprimirPosicaoInvalida(){
     printf("\nPosicao invalida\n");
 }
 void imprimirEscolherQtdGeracoes(){
-    printf("Determine a quantidade de geracoes que deseja simular");
+    printf("Determine a quantidade de geracoes que deseja simular: ");
 }

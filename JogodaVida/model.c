@@ -105,15 +105,20 @@ void definirPosicaoSeresVivos(MUNDO* m, int quantidade){
     }while(i <= quantidade && i != 0);
 }
 
-void receberQtdGeracoes(int geracoes){
-
-    imprimirEscolherQtdGeracoes();
-    scanf(" %d",geracoes);
+int receberQtdGeracoes(){
     
+    int qtdGeracoes;
+    imprimirEscolherQtdGeracoes();
+    scanf(" %d",&qtdGeracoes);
+
+    return qtdGeracoes;
 }
 
 //simula e imprime a proxima geracao de seres vivos 
-void simularGeracao(MUNDO* m, MUNDO* auxiliar){
+void simularGeracao(MUNDO* m, MUNDO* auxiliar, int contador){
+
+    contador++;
+    printf("\n\t\tGeracao %d :\n", contador);
     
     inicializarMundoAuxiliar(auxiliar, m);
     percorrerMundo(m, auxiliar);
@@ -226,7 +231,7 @@ void atualizarMundo(MUNDO* m, MUNDO* auxiliar){
 
 /* A FAZER:
 - Resolver erro de logica: ao digitar 0 na escolha da qtd de seres vivos a serem colocados no mundo
-- Resolver bug : loop infinito na opcao 3 do menu
+- 
 */
 
 

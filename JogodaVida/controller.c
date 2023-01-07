@@ -15,7 +15,7 @@ void menu(){
 
     int menu = receberOpcao();
 
-    int geracoes;
+    int geracoes = 0;
 
     do{
     switch (menu){
@@ -44,14 +44,15 @@ void menu(){
         //simular 1 geracao
         case 3:
 
-            receberQtdGeracoes(geracoes);
-
+            geracoes = receberQtdGeracoes();
+            int i = 0;
+    
             do{
 
-            simularGeracao(&m, &auxiliar);
-            geracoes--;
+            simularGeracao(&m, &auxiliar, i);
+            i++;
 
-            }while(geracoes > 0);
+            }while(i < geracoes);
 
             break;
 
