@@ -8,8 +8,6 @@
 //recebendo a opcao selecionada do Menu
 int receberOpcao(){
 
-    imprimirMenu();
-
     int opcao;
     scanf(" %d", &opcao);
 
@@ -236,7 +234,7 @@ void atualizarMundo(MUNDO* m, MUNDO* auxiliar){
 }
 
 /* A FAZER:
-- 
+- Resolver bug de passagem de parametro nas funcoes do controller.c
 - 
 */
 

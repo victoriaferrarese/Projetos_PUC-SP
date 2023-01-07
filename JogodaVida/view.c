@@ -7,11 +7,17 @@
 void imprimirAbertura(){
     printf("\n\nBEM-VINDO(A) AO JOGO DA VIDA!!\n\n");
 }
-void imprimirMenu(){
+void imprimirMenuPrincipal(){
     printf("\nMENU:\n");
     printf("[1] Jogar\n");
-    printf("[2] Limpar mapa\n");
-    printf("[3] simular geracao\n");
+    printf("\nSelecione a opcao que deseja: ");
+}
+void imprimirMenuJogar(){
+    printf("\nMENU:\n");
+    printf("[1] Definir Seres vivos\n");
+    printf("[2] Simular geracoes\n");
+    printf("[3] Limpar mapa\n");
+    printf("[4] Sair\n");
     printf("\nSelecione a opcao que deseja: ");
 }
 void imprimirOpcaoInvalida(){

@@ -1,6 +1,7 @@
 
 void imprimirAbertura();
-void imprimirMenu();
+void imprimirMenuPrincipal();
+void imprimirMenuJogar();
 void imprimirOpcaoInvalida();
 void imprimirReceberLinha();
 void imprimirReceberColuna();

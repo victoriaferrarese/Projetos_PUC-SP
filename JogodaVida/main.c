@@ -6,5 +6,8 @@
 
 void main(){
 
-    menu();
+    MUNDO m;
+    MUNDO auxiliar;
+    
+    menuPrincipal(&m, &auxiliar);
 }
