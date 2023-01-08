@@ -15,9 +15,10 @@ void imprimirMenuPrincipal(){
 void imprimirMenuJogar(){
     printf("\nMENU:\n");
     printf("[1] Definir Seres vivos\n");
-    printf("[2] Simular geracoes\n");
-    printf("[3] Limpar mapa\n");
-    printf("[4] Sair\n");
+    printf("[2] Definir tempo da simulacao\n");
+    printf("[3] Simular geracoes\n");
+    printf("[4] Limpar mapa\n");
+    printf("[5] Sair\n");
     printf("\nSelecione a opcao que deseja: ");
 }
 void imprimirOpcaoInvalida(){

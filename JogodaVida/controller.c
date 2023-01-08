@@ -70,9 +70,13 @@ void menuJogar(MUNDO* m, MUNDO* auxiliar){
             imprimirMundo(m);
 
             break;
+
+        //Definir tempo de simulacao
+        case 2:
+            break;
         
         //Simular geracoes
-        case 2 :
+        case 3 :
 
             geracoes = receberQtdGeracoes();
             int i = 0;
@@ -88,7 +92,7 @@ void menuJogar(MUNDO* m, MUNDO* auxiliar){
 
 
         //Limpar mundo
-        case 3:
+        case 4:
 
             inicializarMundo(m);
             imprimirMundo(auxiliar);
@@ -96,7 +100,7 @@ void menuJogar(MUNDO* m, MUNDO* auxiliar){
             break;
         
         //Sair
-        case 4:
+        case 5:
 
             menuPrincipal(m, auxiliar);
         
@@ -109,7 +113,7 @@ void menuJogar(MUNDO* m, MUNDO* auxiliar){
 
     imprimirMenuJogar();
     menuJogar = receberOpcao();
-    
+
     }while(!sair);
 
 }

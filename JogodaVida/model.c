@@ -233,8 +233,23 @@ void atualizarMundo(MUNDO* m, MUNDO* auxiliar){
     }
 }
 
+/*void delay(int velocidadeSimulacao){//usa a biblioteca time.h para fazer um delay de acordo com o tanto de segundos desejado
+    int converterMiliseg = 1000 * velocidadeSimulacao;
+
+    clock_t inicio = clock();
+
+    while (clock() < inicio + converterMiliseg);
+}
+
+void delayIndefinido(){//usa a biblioteca time.h para fazer um delay, nesse caso com um tempo pre setado
+    int Miliseg = 750;
+
+    clock_t inicio = clock();
+
+    while (clock() < inicio + Miliseg);
+}*/
 /* A FAZER:
-- Resolver bug de passagem de parametro nas funcoes do controller.c
+- 
 - 
 */
 
