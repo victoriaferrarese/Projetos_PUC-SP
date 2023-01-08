@@ -4,12 +4,17 @@
 #define SER_VIVO '1'
 #define VAZIO '0'
 
+#ifndef _MODEL_H_
+#define _MODEL_H_
+
 struct mapa{
     int matriz[MAX][MAX];
     int linhas;
     int colunas;
 };
 typedef struct mapa MUNDO;
+
+#endif
 
 int receberOpcao();
 void receberTamanhoMundo(MUNDO* m);

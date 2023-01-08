@@ -9,7 +9,7 @@ void menuPrincipal(MUNDO* m, MUNDO* auxiliar){
     int fimDeJogo = 0;
 
     imprimirAbertura();
-
+    imprimirMenuPrincipal();
     int menu = receberOpcao();
 
     do{
@@ -106,9 +106,10 @@ void menuJogar(MUNDO* m, MUNDO* auxiliar){
             break;
 
     }
-    }while(!sair);
 
     imprimirMenuJogar();
     menuJogar = receberOpcao();
+    
+    }while(!sair);
 
 }

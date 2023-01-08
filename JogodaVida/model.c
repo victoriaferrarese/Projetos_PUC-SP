@@ -106,7 +106,7 @@ void definirPosicaoSeresVivos(MUNDO* m, int quantidade){
         }else
             imprimirPosicaoInvalida();
 
-    }while(i < quantidade);
+    }while(i <= quantidade);
 }
 
 int receberQtdGeracoes(){
