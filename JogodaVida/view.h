@@ -1,7 +1,10 @@
 
 void imprimirAbertura();
-void imprimirMenuPrincipal();
+void imprimirMenuInicial();
 void imprimirMenuJogar();
+void imprimirMenuAdicionarSerVivo();
+void imprimirMenuSimularGeracao();
+void imprimirApresentarMundo();
 void imprimirOpcaoInvalida();
 void imprimirReceberLinha();
 void imprimirReceberColuna();

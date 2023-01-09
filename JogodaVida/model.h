@@ -18,6 +18,7 @@ typedef struct mapa MUNDO;
 
 int receberOpcao();
 void receberTamanhoMundo(MUNDO* m);
+void criarMundo(MUNDO* m);
 void inicializarMundo(MUNDO* m);
 void imprimirMundo(MUNDO* m);
 void definirSeresVivos(MUNDO* m);
@@ -31,4 +32,4 @@ void gerarProximaGeracao(MUNDO* m, MUNDO* auxiliar, int vizinhos, int x, int y);
 void simularGeracao(MUNDO* m, MUNDO* auxiliar, int geracoes);
 void atualizarMundo(MUNDO* m, MUNDO* auxiliar);
 int receberVelocidadeDeSimulacao();
-void aplicarVelocidadeDeSimulacao(int velocidadeSimulacao);
+void aplicarVelocidadeDeSimulacao(float velocidadeSimulacao);

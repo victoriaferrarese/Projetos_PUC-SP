@@ -9,5 +9,5 @@ void main(){
     MUNDO m;
     MUNDO auxiliar;
     
-    menuPrincipal(&m, &auxiliar);
+    menuInicial(&m, &auxiliar);
 }

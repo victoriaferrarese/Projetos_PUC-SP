@@ -14,6 +14,12 @@ int receberOpcao(){
 
     return opcao;
 }
+void criarMundo(MUNDO* m){
+
+    inicializarMundo(m);
+    imprimirApresentarMundo();
+    imprimirMundo(m);
+}
 
 //recebendo o tamanho da matriz mundo do usuario
 void receberTamanhoMundo(MUNDO* m){
@@ -242,8 +248,9 @@ int receberVelocidadeDeSimulacao(){
 
     return velocidade;
 }
+
 //Causando um delay durante a execucao do codigo 
-void aplicarVelocidadeDeSimulacao(int velocidadeSimulacao){
+void aplicarVelocidadeDeSimulacao(float velocidadeSimulacao){
 
     //convertendo os segundos de delay em milisegundos
     int milisegundos = 1000 * velocidadeSimulacao;

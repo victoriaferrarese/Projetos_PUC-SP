@@ -4,60 +4,18 @@
 #include "view.h"
 #include "controller.h"
 
-void menuPrincipal(MUNDO* m, MUNDO* auxiliar){
+void menuInicial(MUNDO* m, MUNDO* auxiliar){
 
-    int fimDeJogo = 0;
+    //int fimDeJogo = 0;
 
     imprimirAbertura();
-    imprimirMenuPrincipal();
+    imprimirMenuInicial();
     int menu = receberOpcao();
 
-    do{
+    //do{
     switch (menu){
 
-        //Jogar
-        case 1:
-
-            menuJogar(m, auxiliar);
-            break;
-
-        //
-        case 2: 
-
-
-            break;
-
-        //
-        case 3:
-
-           
-        default:
-
-            imprimirOpcaoInvalida();
-            break;
-
-    }
-    
-    imprimirMenuPrincipal();
-    menu = receberOpcao();
-
-    }while(!fimDeJogo);
-    
-}
-
-void menuJogar(MUNDO* m, MUNDO* auxiliar){
-
-    imprimirMenuJogar();
-    int menuJogar = receberOpcao();
-
-    int tempoSimulacao;
-    int geracoes = 0;
-    int sair = 0;
-
-    do{
-    switch(menuJogar){
-
-        //Definir Seres vivos
+        //Criar novo mundo 
         case 1:
 
             do{
@@ -66,21 +24,133 @@ void menuJogar(MUNDO* m, MUNDO* auxiliar){
 
             }while(m->linhas < MIN || m->linhas > MAX || m->colunas < MIN || m->colunas > MAX);
 
+            criarMundo(m);
+            menuJogar(m, auxiliar);
+            break;
+
+        //Carregar mundo salvo
+        case 2: 
+
+
+            break;
+
+        default:
+
+            imprimirOpcaoInvalida();
+            break;
+
+    }
+    
+    imprimirMenuInicial();
+    menu = receberOpcao();
+
+    //}while(!fimDeJogo);
+    
+}
+
+void menuJogar(MUNDO* m, MUNDO* auxiliar){
+
+    imprimirMenuJogar();
+    int menuJogar = receberOpcao();
+
+    int sair = 0;
+
+    //do{
+    switch(menuJogar){
+
+        //Adicionar seres vivos
+        case 1:
+
+            menuAdicionarSerVivo(m, auxiliar);
+
+            break;
+
+        //Simular Geracoes
+        case 2:
+
+            menuSimularGeracao(m, auxiliar);
+            
+            break;
+        
+        //Limpar mundo
+        case 3 :
+
+            
+
+
+        //Salvar mundo
+        case 4:
+
             inicializarMundo(m);
+            imprimirMundo(auxiliar);
+
+            break;
+        
+        default:
+
+            imprimirOpcaoInvalida();
+            break;
+
+    }
+
+    imprimirMenuJogar();
+    menuJogar = receberOpcao();
+
+    //}while(!sair);
+
+}
+void menuAdicionarSerVivo(MUNDO* m, MUNDO* auxiliar){
+
+    imprimirMenuAdicionarSerVivo();
+    int opcaoAdicionarSerVivo = receberOpcao();
+
+    switch (opcaoAdicionarSerVivo){
+
+        //Adicionar seres vivos manualmente (um por um)
+        case 1:
+
             definirSeresVivos(m);
+            imprimirApresentarMundo();
             imprimirMundo(m);
 
             break;
 
-        //Definir tempo de simulacao
-        case 2:
+        //Escolher padrao ja existente de seres vivos
+        case 2: 
+
+
+            break;
+
+        default:
+
+            imprimirOpcaoInvalida();
+            break;
+
+    }
+    
+    menuJogar(m, auxiliar);
+}
+
+void menuSimularGeracao(MUNDO* m, MUNDO* auxiliar){
+
+    imprimirMenuSimularGeracao();
+    int opcaoSimularGeracao = receberOpcao();
+
+    float tempoSimulacao = 0.75;
+    int geracoes = 0;
+
+    switch (opcaoSimularGeracao){
+
+        //Definir o tempo de simulacao das geracoes
+        case 1:
 
             tempoSimulacao = receberVelocidadeDeSimulacao();
-            
+            menuSimularGeracao(m, auxiliar);
+
             break;
-        
-        //Simular geracoes
-        case 3 :
+
+        //Simular geracoes automaticamente
+        case 2:
 
             geracoes = receberQtdGeracoes();
             int i = 0;
@@ -95,30 +165,18 @@ void menuJogar(MUNDO* m, MUNDO* auxiliar){
 
             break;
 
+        //Simular geracoes manualmente
+        case 3: 
 
-        //Limpar mundo
-        case 4:
-
-            inicializarMundo(m);
-            imprimirMundo(auxiliar);
 
             break;
-        
-        //Sair
-        case 5:
 
-            menuPrincipal(m, auxiliar);
-        
         default:
 
             imprimirOpcaoInvalida();
             break;
 
     }
-
-    imprimirMenuJogar();
-    menuJogar = receberOpcao();
-
-    }while(!sair);
-
+    
+    menuJogar(m, auxiliar);
 }

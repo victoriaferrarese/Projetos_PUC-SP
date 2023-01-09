@@ -7,19 +7,35 @@
 void imprimirAbertura(){
     printf("\n\nBEM-VINDO(A) AO JOGO DA VIDA!!\n\n");
 }
-void imprimirMenuPrincipal(){
+void imprimirMenuInicial(){
     printf("\nMENU:\n");
-    printf("[1] Jogar\n");
+    printf("[1] Criar novo mundo\n");
+    printf("[2] Carregar mundo salvo\n");
     printf("\nSelecione a opcao que deseja: ");
 }
 void imprimirMenuJogar(){
     printf("\nMENU:\n");
-    printf("[1] Definir Seres vivos\n");
-    printf("[2] Definir tempo da simulacao\n");
-    printf("[3] Simular geracoes\n");
-    printf("[4] Limpar mapa\n");
-    printf("[5] Sair\n");
+    printf("[1] Adicionar seres vivos\n");
+    printf("[2] Simular geracoes\n");
+    printf("[3] Limpar mundo\n");
+    printf("[4] Salvar mundo\n");
     printf("\nSelecione a opcao que deseja: ");
+}
+void imprimirMenuAdicionarSerVivo(){
+    printf("\n");
+    printf("[1] Adicionar seres vivos manualmente (um por um)\n");
+    printf("[2] Escolher padrao ja existente de seres vivos\n");
+    printf("\nSelecione a opcao que deseja: ");
+}
+void imprimirMenuSimularGeracao(){
+    printf("\n");
+    printf("[1] Definir o tempo de simulacao das geracoes\n");
+    printf("[2] Simular geracoes automaticamente\n");
+    printf("[3] Simular geracoes manualmente\n");
+    printf("\nSelecione a opcao que deseja: ");
+}
+void imprimirApresentarMundo(){
+    printf("\t\tEsse e o seu mundo!!\n");
 }
 void imprimirOpcaoInvalida(){
     printf("\nOpcao invalida!!\n");
