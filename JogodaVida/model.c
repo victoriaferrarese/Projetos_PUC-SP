@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include "model.h"
 #include "view.h"
 #include "controller.h"
@@ -233,23 +234,28 @@ void atualizarMundo(MUNDO* m, MUNDO* auxiliar){
     }
 }
 
-/*void delay(int velocidadeSimulacao){//usa a biblioteca time.h para fazer um delay de acordo com o tanto de segundos desejado
-    int converterMiliseg = 1000 * velocidadeSimulacao;
+int receberVelocidadeDeSimulacao(){
+    
+    int velocidade;
+    imprimirEscolherVelocidade();
+    scanf("%d", &velocidade);
 
+    return velocidade;
+}
+//Causando um delay durante a execucao do codigo 
+void aplicarVelocidadeDeSimulacao(int velocidadeSimulacao){
+
+    //convertendo os segundos de delay em milisegundos
+    int milisegundos = 1000 * velocidadeSimulacao;
+
+    //armazenando o tempo de inicio do delay
     clock_t inicio = clock();
 
-    while (clock() < inicio + converterMiliseg);
+    while (clock() < inicio + milisegundos);
 }
 
-void delayIndefinido(){//usa a biblioteca time.h para fazer um delay, nesse caso com um tempo pre setado
-    int Miliseg = 750;
-
-    clock_t inicio = clock();
-
-    while (clock() < inicio + Miliseg);
-}*/
 /* A FAZER:
-- 
+- Organizar as opcoes do menu
 - 
 */
 

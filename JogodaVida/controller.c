@@ -50,6 +50,7 @@ void menuJogar(MUNDO* m, MUNDO* auxiliar){
     imprimirMenuJogar();
     int menuJogar = receberOpcao();
 
+    int tempoSimulacao;
     int geracoes = 0;
     int sair = 0;
 
@@ -73,6 +74,9 @@ void menuJogar(MUNDO* m, MUNDO* auxiliar){
 
         //Definir tempo de simulacao
         case 2:
+
+            tempoSimulacao = receberVelocidadeDeSimulacao();
+            
             break;
         
         //Simular geracoes
@@ -83,6 +87,7 @@ void menuJogar(MUNDO* m, MUNDO* auxiliar){
     
             do{
 
+            aplicarVelocidadeDeSimulacao(tempoSimulacao);
             simularGeracao(m, auxiliar, i);
             i++;
 
