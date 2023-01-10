@@ -14,6 +14,7 @@ int receberOpcao(){
 
     return opcao;
 }
+
 void criarMundo(MUNDO* m){
 
     inicializarMundo(m);
@@ -31,7 +32,6 @@ void receberTamanhoMundo(MUNDO* m){
 
     imprimirReceberColuna();
     scanf(" %d", &m->colunas);
-
 }
 
 //preenchendo a matriz com zeros
@@ -260,8 +260,103 @@ void aplicarVelocidadeDeSimulacao(float velocidadeSimulacao){
     while (clock() < inicio + milisegundos);
 }
 
+void validarPosicaoPadraoSeresVivos(MUNDO* m, MUNDO* auxiliar){
+
+    int escolhaPadrao;
+    scanf(" %d", &escolhaPadrao);
+        
+    int x;
+    int y;
+
+    imprimirReceberLinha();
+    scanf("%d", &x);
+
+    imprimirReceberColuna();
+    scanf("%d", &y); 
+
+    inicializarMundoAuxiliar(auxiliar, m);
+
+    switch(escolhaPadrao){
+
+        case 1: 
+
+            if(posicaoValida(m, x, y) && posicaoValida(m, x+1, y) && posicaoValida(m, x+2, y)){
+                
+                auxiliar->matriz[x][y] = SER_VIVO;
+                auxiliar->matriz[x+1][y] = SER_VIVO;
+                auxiliar->matriz[x+2][y] = SER_VIVO;
+            }
+
+            break;
+
+        case 2:
+
+             if(posicaoValida(m, x, y) && posicaoValida(m, x, y+1) && posicaoValida(m, x, y+2)){
+                
+                auxiliar->matriz[x][y] = SER_VIVO;
+                auxiliar->matriz[x][y+1] = SER_VIVO;
+                auxiliar->matriz[x][y+2] = SER_VIVO;
+            }
+
+            break;
+
+        case 3:
+
+            if(posicaoValida(m, x, y) && posicaoValida(m, x, y+1) && posicaoValida(m, x+1, y) && posicaoValida(m, x+1, y+1)){
+                
+                auxiliar->matriz[x][y] = SER_VIVO;
+                auxiliar->matriz[x][y+1] = SER_VIVO;
+                auxiliar->matriz[x+1][y] = SER_VIVO;
+                auxiliar->matriz[x+1][y+1] = SER_VIVO;
+            }
+
+            break;
+
+        case 4:
+            if(posicaoValida(m, x, y) && posicaoValida(m, x+1, y-1) && posicaoValida(m, x+2, y-1)){
+                
+                auxiliar->matriz[x][y] = SER_VIVO;
+                auxiliar->matriz[x+1][y-1] = SER_VIVO;
+                auxiliar->matriz[x+2][y-1] = SER_VIVO;
+
+            }
+
+            break;
+
+        case 5:
+            if(posicaoValida(m, x, y) && posicaoValida(m, x+1, y+1) && posicaoValida(m, x+2, y+1) && posicaoValida(m, x+2, y) && posicaoValida(m, x+2, y-1)){
+                
+                auxiliar->matriz[x][y] = SER_VIVO;
+                auxiliar->matriz[x+1][y+1] = SER_VIVO;
+                auxiliar->matriz[x+2][y+1] = SER_VIVO;
+                auxiliar->matriz[x+2][y] = SER_VIVO;
+                auxiliar->matriz[x+2][y-1] = SER_VIVO;
+            }
+
+            break;
+
+        case 6:
+             if(posicaoValida(m, x, y) && posicaoValida(m, x+1, y-1) && posicaoValida(m, x+2, y-2)){
+                
+                auxiliar->matriz[x][y] = SER_VIVO;
+                auxiliar->matriz[x+1][y-1] = SER_VIVO;
+                auxiliar->matriz[x+2][y-2] = SER_VIVO;
+            }
+
+            break;
+
+        default:
+
+            imprimirOpcaoInvalida();
+            break;
+        
+    }
+
+   atualizarMundo(m, auxiliar);
+
+}
 /* A FAZER:
-- Organizar as opcoes do menu
+- resolver bug ao imprimir opcao 5 dos padroes de seres vivos 
 - 
 */
 

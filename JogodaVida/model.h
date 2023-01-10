@@ -33,3 +33,5 @@ void simularGeracao(MUNDO* m, MUNDO* auxiliar, int geracoes);
 void atualizarMundo(MUNDO* m, MUNDO* auxiliar);
 int receberVelocidadeDeSimulacao();
 void aplicarVelocidadeDeSimulacao(float velocidadeSimulacao);
+void validarPosicaoPadraoSeresVivos(MUNDO* m, MUNDO* auxiliar);
+

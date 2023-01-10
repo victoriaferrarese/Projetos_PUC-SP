@@ -15,3 +15,4 @@ void imprimirPosicaoInvalida();
 void imprimirEscolherQtdGeracoes();
 void imprimirProximaGeracao();
 void imprimirEscolherVelocidade();
+void imprimirPadroesSeresVivos();

@@ -117,7 +117,10 @@ void menuAdicionarSerVivo(MUNDO* m, MUNDO* auxiliar){
 
         //Escolher padrao ja existente de seres vivos
         case 2: 
-
+            imprimirPadroesSeresVivos();
+            validarPosicaoPadraoSeresVivos(m, auxiliar);
+            imprimirApresentarMundo();
+            imprimirMundo(m);
 
             break;
 

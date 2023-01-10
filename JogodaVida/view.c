@@ -34,6 +34,15 @@ void imprimirMenuSimularGeracao(){
     printf("[3] Simular geracoes manualmente\n");
     printf("\nSelecione a opcao que deseja: ");
 }
+void imprimirPadroesSeresVivos(){
+    
+    printf("\n\t\tPADROES DE SERES VIVOS: \n\n");
+    printf(" *                      *     *        *  \n");
+    printf(" *    * * *    * *    *         *     *   \n");
+    printf(" *             * *    *     * * *    *    \n\n");
+    printf("[1]    [2]     [3]    [4]    [5]     [6]  \n");
+    printf("\nSelecione a opcao que deseja: ");
+}
 void imprimirApresentarMundo(){
     printf("\t\tEsse e o seu mundo!!\n");
 }
