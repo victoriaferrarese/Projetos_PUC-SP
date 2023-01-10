@@ -13,4 +13,5 @@ void imprimirEscolherQtdSeresVivos();
 void imprimirEscolherPosicaoSeresVivos();
 void imprimirPosicaoInvalida();
 void imprimirEscolherQtdGeracoes();
+void imprimirProximaGeracao();
 void imprimirEscolherVelocidade();

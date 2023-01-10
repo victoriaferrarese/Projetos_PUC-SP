@@ -136,7 +136,7 @@ void menuSimularGeracao(MUNDO* m, MUNDO* auxiliar){
     imprimirMenuSimularGeracao();
     int opcaoSimularGeracao = receberOpcao();
 
-    float tempoSimulacao = 0.75;
+    float tempoSimulacao = 0.5;
     int geracoes = 0;
 
     switch (opcaoSimularGeracao){
@@ -159,6 +159,7 @@ void menuSimularGeracao(MUNDO* m, MUNDO* auxiliar){
 
             aplicarVelocidadeDeSimulacao(tempoSimulacao);
             simularGeracao(m, auxiliar, i);
+            imprimirMundo(m);
             i++;
 
             }while(i < geracoes);
@@ -167,7 +168,22 @@ void menuSimularGeracao(MUNDO* m, MUNDO* auxiliar){
 
         //Simular geracoes manualmente
         case 3: 
+            
+            imprimirProximaGeracao();
 
+            char caractere;
+            int j = 0;
+    
+            do{
+
+            aplicarVelocidadeDeSimulacao(tempoSimulacao);
+            simularGeracao(m, auxiliar, j);
+            imprimirMundo(m);
+            printf("\n");
+            scanf(" %c", &caractere);
+            j++;
+
+            }while(caractere != 's');
 
             break;
 

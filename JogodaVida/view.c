@@ -61,6 +61,9 @@ void imprimirPosicaoInvalida(){
 void imprimirEscolherQtdGeracoes(){
     printf("Determine a quantidade de geracoes que deseja simular: ");
 }
+void imprimirProximaGeracao(){
+    printf("\nDigite ""p"" para simular a proxima geracao e digite ""s"" para parar a simulacao\n");
+}
 void imprimirEscolherVelocidade(){
     printf("\nDetermine o tempo de simulacao das geracoes (em segundos): \n");
 }

@@ -134,7 +134,6 @@ void simularGeracao(MUNDO* m, MUNDO* auxiliar, int contador){
     inicializarMundoAuxiliar(auxiliar, m);
     percorrerMundo(m, auxiliar);
     atualizarMundo(m, auxiliar);
-    imprimirMundo(m);
 
 }
 
