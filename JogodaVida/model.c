@@ -54,13 +54,13 @@ void imprimirMundo(MUNDO* m){
     }printf("\n");
 
     for(int i = 0; i < m->linhas; i++){
-        printf("%d ", i); //numerando as linhas
+        printf("%d", i); //numerando as linhas
         for(int j = 0; j < m->colunas; j++){
 
             if (m->matriz[i][j] == VAZIO)
                 printf("   ");
             else 
-                printf("  * ");
+                printf(" * ");
 
         }printf("\n");
     }
