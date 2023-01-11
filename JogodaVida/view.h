@@ -16,3 +16,6 @@ void imprimirEscolherQtdGeracoes();
 void imprimirProximaGeracao();
 void imprimirEscolherVelocidade();
 void imprimirPadroesSeresVivos();
+void imprimirMensagemErro();
+void imprimirMensagemMundoSalvo();
+void imprimirMensagemMundoCarregado();

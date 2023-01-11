@@ -355,9 +355,57 @@ void validarPosicaoPadraoSeresVivos(MUNDO* m, MUNDO* auxiliar){
    atualizarMundo(m, auxiliar);
 
 }
+
+void salvarMundo(MUNDO* m){
+
+    FILE* f;
+
+    f = fopen("mundo.txt", "r+");
+
+    if( f == NULL){
+        imprimirMensagemErro();
+        exit(1);
+    }
+
+
+    for(int i = 0; i < MAX; i++){
+        for(int j = 0; j < MAX; j++){
+            
+            fprintf(f, "%c", m->matriz[i][j]); 
+        }
+        fprintf(f, "\n");  
+    }
+
+    fclose(f);
+
+    imprimirMensagemMundoSalvo();
+
+}
+
+void carregarMundoSalvo(MUNDO* m){
+    
+    FILE* f;
+    
+    f = fopen("mundo.txt", "r+");
+
+    fseek(f, 0, SEEK_SET);
+
+    for(int i = 0; i < MAX; i++){
+        for(int j = 0; j < MAX; j++){
+
+            fscanf(f, " %d", &(m->matriz[i][j])); // BUG * BUG * BUG * BUG * BUG * BUG * BUG 
+        }
+    }
+
+    fclose(f);
+
+    imprimirMundo(m);
+
+    imprimirMensagemMundoCarregado();
+
+}
+
 /* A FAZER:
-- resolver bug ao imprimir opcao 5 dos padroes de seres vivos 
+- Resolver Bug na funcao carregarMundoSalvo() (loop infinito)
 - 
 */
-
-

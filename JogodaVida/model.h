@@ -34,4 +34,5 @@ void atualizarMundo(MUNDO* m, MUNDO* auxiliar);
 int receberVelocidadeDeSimulacao();
 void aplicarVelocidadeDeSimulacao(float velocidadeSimulacao);
 void validarPosicaoPadraoSeresVivos(MUNDO* m, MUNDO* auxiliar);
-
+void salvarMundo(MUNDO* m);
+void carregarMundoSalvo(MUNDO* m);

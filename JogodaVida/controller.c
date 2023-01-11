@@ -30,7 +30,9 @@ void menuInicial(MUNDO* m, MUNDO* auxiliar){
 
         //Carregar mundo salvo
         case 2: 
-
+            
+            carregarMundoSalvo(m);
+            menuJogar(m, auxiliar);
 
             break;
 
@@ -75,14 +77,22 @@ void menuJogar(MUNDO* m, MUNDO* auxiliar){
         //Limpar mundo
         case 3 :
 
+            inicializarMundo(m);
+            imprimirMundo(m);
+
+            break;
             
-
-
         //Salvar mundo
         case 4:
 
-            inicializarMundo(m);
-            imprimirMundo(auxiliar);
+            salvarMundo(m);
+
+            break;
+        
+        //Voltar ao Menu Inicial
+        case 5:
+
+            menuInicial(m, auxiliar);
 
             break;
         
@@ -123,6 +133,7 @@ void menuAdicionarSerVivo(MUNDO* m, MUNDO* auxiliar){
             imprimirMundo(m);
 
             break;
+
 
         default:
 

@@ -19,6 +19,7 @@ void imprimirMenuJogar(){
     printf("[2] Simular geracoes\n");
     printf("[3] Limpar mundo\n");
     printf("[4] Salvar mundo\n");
+    printf("[5] Voltar\n");
     printf("\nSelecione a opcao que deseja: ");
 }
 void imprimirMenuAdicionarSerVivo(){
@@ -75,4 +76,13 @@ void imprimirProximaGeracao(){
 }
 void imprimirEscolherVelocidade(){
     printf("\nDetermine o tempo de simulacao das geracoes (em segundos): \n");
+}
+void imprimirMensagemErro(){
+    printf("\nDesculpe, banco de dados indisponivel...\n");
+}
+void imprimirMensagemMundoSalvo(){
+    printf("\nMundo salvo com exito!\n");
+}
+void imprimirMensagemMundoCarregado(){
+    printf("\nMundo carregado com exito!\n");
 }
