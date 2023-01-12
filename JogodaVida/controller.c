@@ -30,8 +30,10 @@ void menuInicial(MUNDO* m, MUNDO* auxiliar){
 
         //Carregar mundo salvo
         case 2: 
-            
+
+            inicializarMundo(m);
             carregarMundoSalvo(m);
+            imprimirMundo(m);
             menuJogar(m, auxiliar);
 
             break;

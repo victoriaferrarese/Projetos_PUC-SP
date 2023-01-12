@@ -360,7 +360,7 @@ void salvarMundo(MUNDO* m){
 
     FILE* f;
 
-    f = fopen("mundo.txt", "r+");
+    f = fopen("mundo.txt", "w");
 
     if( f == NULL){
         imprimirMensagemErro();
@@ -383,21 +383,19 @@ void salvarMundo(MUNDO* m){
 }
 
 void carregarMundoSalvo(MUNDO* m){
-    
-    FILE* f;
-    
-    f = fopen("mundo.txt", "r+");
 
-    fseek(f, 0, SEEK_SET);
-
+    FILE* g;
+    
+    g = fopen("mundo.txt", "r+");
+    
     for(int i = 0; i < MAX; i++){
         for(int j = 0; j < MAX; j++){
-
-            fscanf(f, " %d", &(m->matriz[i][j])); // BUG * BUG * BUG * BUG * BUG * BUG * BUG 
+            printf("\nnumero: %c\n", m->matriz[i][j]);
+            fscanf(g, " %c", m->matriz[i][j]); // BUG * BUG * BUG * BUG * BUG * BUG * BUG 
         }
     }
 
-    fclose(f);
+    fclose(g);
 
     imprimirMundo(m);
 
@@ -405,7 +403,3 @@ void carregarMundoSalvo(MUNDO* m){
 
 }
 
-/* A FAZER:
-- Resolver Bug na funcao carregarMundoSalvo() (loop infinito)
-- 
-*/
