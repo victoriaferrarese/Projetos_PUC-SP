@@ -403,3 +403,4 @@ void carregarMundoSalvo(MUNDO* m){
 
 }
 
+// Bug: Problemas com a funcao carregarMundoSalvo(MUNDO* m) -> nao consigo passar o mundo do arquivo txt para a matriz m 
