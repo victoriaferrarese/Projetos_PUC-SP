@@ -1,0 +1,1 @@
+void menuPrincipal(PECA* pecas);
