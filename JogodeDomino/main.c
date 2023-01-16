@@ -6,12 +6,12 @@
 #include "View.h"
 
 int main(){
+
+    PECA pecas[TOTAL_PECAS];
+
+    inicializarPecas(pecas);
+    imprimirPecas(pecas);
     
-    printf("DOMINO!\n\n");
-
-    pecaInfo pecas[28];
-
-    interface(pecas);
 }
 
 

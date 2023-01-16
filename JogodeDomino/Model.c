@@ -5,72 +5,27 @@
 #include "View.h"
 #include "Controller.h"
 
+void inicializarPecas(PECA* pecas){
+    
+    int i = 0;
 
+    for(int j = 0; j <= 6; j++){
+        for( int k = j; k <= 6; k++){
 
-void gerarPecas(pecaInfo pecas[]){
-
-    int i =0;
-
-    for(int j = 0; j <= 6; j++) //primeiro numero da peca
-    {
-        for (int k = j; k <= 6; k++) //segundo numero da peca
-        {
             pecas[i].numero1 = j;
             pecas[i].numero2 = k;
-            pecas[i].posicao = i;
+             i++;
 
-            i++;//contador de pecas
         }
-    }
-}
-void embaralharPecas(pecaInfo pecas[]){
-
-    int posicaoTemporaria = 0;
-    int numeroSorteado = 0;
-
-    srand(time(NULL));//gera um valor inicial para a funcao rand(),que nunca se repete (baseado no relogio do sistema)
-
-    for (int i = 0;i < 28; i++){
-
-        numeroSorteado = rand()%27; //gera um numero aleatorio entre 0 e 27.
-
-        posicaoTemporaria = pecas[i].posicao; //posicaoTemporaria recebe o valor da posicao [i]
-
-        // a peca da posicao sorteada e a peca da posicao [i] trocam de valores entre si
-        pecas[i].posicao = pecas[numeroSorteado].posicao;
-        pecas[numeroSorteado].posicao = posicaoTemporaria;
-
-    }
-}
-
-void distribuirPecas(pecaInfo pecas[]){
-
-    for (int i = 0; i < 14; i++){
-
-        pecas[(pecas[i].posicao)].status = J1;
-        pecas[(pecas[i].posicao+7)].status = J2;
-    }
-    
-    for (int j = 14; j < 28; j++) {
-
-        pecas[(pecas[j].posicao)].status = PILHA;
+       
     }
     
 }
 
-void iniciarJogo(pecaInfo pecas[]){
+void imprimirPecas(PECA* pecas){
 
-    gerarPecas(pecas);
-    embaralharPecas(pecas);
-    //distribuirPecas(); 
-
-}
-
-void desembaralharPecas(pecaInfo pecas[]){
-
-    for(int j = 0; j < 28; j++){
-        
-        pecas[j].posicao = j;
+    for(int i = 0; i < TOTAL_PECAS; i++){
+        printf("peca %d\t: %d | %d \n", i, pecas[i].numero1, pecas[i].numero2);
     }
 }
 
