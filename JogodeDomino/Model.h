@@ -15,3 +15,4 @@ typedef struct pecaInfo PECA;
 
 void inicializarPecas(PECA* pecas);
 void imprimirPecas(PECA* pecas);
+void embaralharPecas(PECA* pecas);
