@@ -10,7 +10,6 @@ int main(){
     PECA pecas[TOTAL_PECAS];
 
     menuInicial(pecas);
-    
 }
 
 
