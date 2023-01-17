@@ -1,0 +1,2 @@
+void imprimirMenuInicial();
+void imprimirOpcaoInvalida();

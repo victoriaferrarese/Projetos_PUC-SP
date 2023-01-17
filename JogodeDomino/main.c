@@ -9,11 +9,7 @@ int main(){
 
     PECA pecas[TOTAL_PECAS];
 
-    inicializarPecas(pecas);
-    imprimirPecas(pecas);
-    embaralharPecas(pecas);
-    printf("\nEmbaralhadas: \n");
-    imprimirPecas(pecas);
+    menuInicial(pecas);
     
 }
 

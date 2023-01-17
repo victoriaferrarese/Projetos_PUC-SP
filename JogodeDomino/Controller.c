@@ -5,11 +5,35 @@
 #include "Controller.h"
 #include "View.h"
 
-/*void menuPrincipal(PECA* pecas){
+void menuInicial(PECA* pecas){
 
-    switch(){
+    int opcaoMenu;
+    imprimirMenuInicial();
+    scanf(" %d", &opcaoMenu);
+
+    switch(opcaoMenu){
+
+        //gerar/organizar pecas
+        case 1: 
+
+            inicializarPecas(pecas);
+            imprimirPecas(pecas);
+            break;
+
+        //embaralhar pecas
+        case 2:
+
+            embaralharPecas(pecas);
+            imprimirPecas(pecas);
+            break;
+
+        default :
+
+            imprimirOpcaoInvalida();
+            break;
 
     }
 
+     menuInicial(pecas);
+
 }
-*/
