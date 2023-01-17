@@ -11,6 +11,9 @@ int main(){
 
     inicializarPecas(pecas);
     imprimirPecas(pecas);
+    embaralharPecas(pecas);
+    printf("\nEmbaralhadas: \n");
+    imprimirPecas(pecas);
     
 }
 

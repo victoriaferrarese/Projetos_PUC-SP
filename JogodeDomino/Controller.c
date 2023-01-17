@@ -5,10 +5,11 @@
 #include "Controller.h"
 #include "View.h"
 
-void menuPrincipal(PECA* pecas){
+/*void menuPrincipal(PECA* pecas){
 
     switch(){
 
     }
 
 }
+*/
