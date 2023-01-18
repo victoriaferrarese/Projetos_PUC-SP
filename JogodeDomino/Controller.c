@@ -13,18 +13,15 @@ void menuInicial(PECA* pecas){
 
     switch(opcaoMenu){
 
-        //gerar/organizar pecas
+        //Jogar
         case 1: 
-
-            inicializarPecas(pecas);
-            imprimirPecas(pecas);
+            
             break;
 
-        //embaralhar pecas
+        //
         case 2:
 
-            embaralharPecas(pecas);
-            imprimirPecas(pecas);
+            
             break;
 
         default :
@@ -36,4 +33,27 @@ void menuInicial(PECA* pecas){
 
      menuInicial(pecas);
 
+}
+
+void menuJogar(PECA* pecas){
+
+    int opcaoMenuJogar;
+    scanf("%d", &opcaoMenuJogar);
+
+    switch(opcaoMenuJogar){
+
+        //jogador vs jogador
+        case 1:
+            break;
+
+        //jogador vs IA
+        case 2:
+            break;
+
+        default:
+            imprimirOpcaoInvalida();
+            break;
+    }
+
+    menuJogar(pecas);
 }
