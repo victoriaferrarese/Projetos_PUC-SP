@@ -7,8 +7,13 @@
 
 void imprimirMenuInicial(){
     printf("\nMENU:\n");
-    printf("[1] gerar/organizar pecas\n");
-    printf("[2] embaralhar pecas\n");
+    printf("[1] Jogar\n");
+}
+
+void imprimirMenuJogadores(){
+    printf("\nComo deseja jogar?\n");
+    printf("[1] Jogador vs Jogador\n");
+    printf("[2] Jogador vs IA\n");
 }
 
 void imprimirOpcaoInvalida(){

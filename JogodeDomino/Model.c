@@ -5,6 +5,13 @@
 #include "View.h"
 #include "Controller.h"
 
+void iniciarJogo(PECA* pecas){
+    inicializarPecas(pecas);
+    embaralharPecas(pecas);
+    distribuirPecas(pecas);
+    
+    imprimirPecas(pecas);
+}
 void inicializarPecas(PECA* pecas){
     
     int i = 0;
@@ -51,5 +58,30 @@ void embaralharPecas(PECA* pecas){
     }
 }
 
+void distribuirPecas(PECA* pecas){
+
+    for(int i = 0; i < 28; i++){
+        if (i < 7){
+            pecas[i].status = JOGADOR_1;
+        } else if (i < 14){
+                pecas[i].status = JOGADOR_2;
+            }else {
+                pecas[i].status = PILHA;
+            }
+    }
+}
+
+/*void imprimirPecasjogadores(PECA* pecas){
+
+    for(int i = 0; i < 14; i++){
+        if (pecas[i].status == JOGADOR_1){
+            printf("\nPECAS JOGADOR 1 :\n");
+            
+        }
+            
+        else
+            pecas[i].status = JOGADOR_2;
+    }
+}*/
 
 

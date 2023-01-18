@@ -15,7 +15,7 @@ void menuInicial(PECA* pecas){
 
         //Jogar
         case 1: 
-            
+            menuJogadores(pecas);
             break;
 
         //
@@ -35,15 +35,18 @@ void menuInicial(PECA* pecas){
 
 }
 
-void menuJogar(PECA* pecas){
+void menuJogadores(PECA* pecas){
 
-    int opcaoMenuJogar;
-    scanf("%d", &opcaoMenuJogar);
+    int opcaoMenuJogadores;
+    imprimirMenuJogadores();
+    scanf("%d", &opcaoMenuJogadores);
 
-    switch(opcaoMenuJogar){
+    switch(opcaoMenuJogadores){
 
         //jogador vs jogador
         case 1:
+
+            iniciarJogo(pecas);
             break;
 
         //jogador vs IA
@@ -55,5 +58,5 @@ void menuJogar(PECA* pecas){
             break;
     }
 
-    menuJogar(pecas);
+    menuJogadores(pecas);
 }
