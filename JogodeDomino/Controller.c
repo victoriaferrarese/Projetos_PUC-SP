@@ -5,7 +5,7 @@
 #include "Controller.h"
 #include "View.h"
 
-void menuInicial(PECA* pecas){
+void menuInicial(PECA* pecas, PECAS_MESA* mesa){
 
     int opcaoMenu;
     imprimirMenuInicial();
@@ -15,7 +15,7 @@ void menuInicial(PECA* pecas){
 
         //Nova partida
         case 1: 
-            menuJogadores(pecas);
+            menuJogadores(pecas, mesa);
             break;
 
         //
@@ -31,11 +31,11 @@ void menuInicial(PECA* pecas){
 
     }
 
-     menuInicial(pecas);
+     menuInicial(pecas, mesa);
 
 }
 
-void menuJogadores(PECA* pecas){
+void menuJogadores(PECA* pecas, PECAS_MESA* mesa){
 
     int opcaoMenuJogadores;
     imprimirMenuJogadores();
@@ -47,7 +47,7 @@ void menuJogadores(PECA* pecas){
         case 1:
 
             iniciarJogo(pecas);
-            menuJogadorVsJogador(pecas);
+            menuJogadorVsJogador(pecas, mesa);
             break;
 
         //jogador vs IA
@@ -60,12 +60,11 @@ void menuJogadores(PECA* pecas){
             break;
     }
 
-    menuJogadores(pecas);
 }
 
-void menuJogadorVsJogador(PECA* pecas){
+void menuJogadorVsJogador(PECA* pecas, PECAS_MESA* mesa){
 
-    int primeiroJogador = escolherPrimeiroJogador();
+    int jogador = escolherPrimeiroJogador();
 
     int opcaoJogadorVsJogador;
     imprimirMenuJogadorVsJogador();
@@ -73,13 +72,30 @@ void menuJogadorVsJogador(PECA* pecas){
 
     switch (opcaoJogadorVsJogador){
 
-    case 1:
+        //Jogar uma peca
+        case 1:
 
-        imprimirPecasjogador(pecas,primeiroJogador);
-        
-        break;
-    
-    default:
-        break;
+            imprimirPecasjogador(pecas,jogador);
+            //permitir jogada
+
+            if(jogador == 1)
+                jogador = 2;
+            else
+                jogador = 1;
+
+            break;
+
+        //Comprar uma peca
+        case 2:
+
+            comprarPeca(pecas, mesa, jogador);
+            break;
+
+        default:
+
+            imprimirOpcaoInvalida();
+            break;
     }
+
+    menuJogadorVsJogador(pecas, mesa);
 }

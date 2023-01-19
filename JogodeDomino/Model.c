@@ -102,4 +102,17 @@ void imprimirPecasjogador(PECA* pecas, int jogador){
     }
 }
 
+/*void comprarPeca(PECA* pecas, PECAS_MESA* Mesa, int jogador){
 
+   // PECA pecaParaComprar = peca
+
+
+
+
+}*/
+
+/* A FAZER:
+
+*  Permitir jogada (controller.c -> menuJogadorVsJogador -> case 1).
+* atribuir valor à variavel jogador atual no struct mesa
+*/

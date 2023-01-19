@@ -23,7 +23,7 @@ struct Mesa{
     int jogadorAtual;
 
 };
-typedef struct Mesa PECA_MESA;
+typedef struct Mesa PECAS_MESA;
 
 #endif
 
