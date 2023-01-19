@@ -20,6 +20,7 @@ struct Mesa{
 
     int lado1; 
     int lado2;
+    int jogadorAtual;
 
 };
 typedef struct Mesa PECA_MESA;
@@ -31,3 +32,5 @@ void inicializarPecas(PECA* pecas);
 void imprimirPecas(PECA* pecas);
 void embaralharPecas(PECA* pecas);
 void distribuirPecas(PECA* pecas);
+int escolherPrimeiroJogador();
+void imprimirPecasjogador(PECA* pecas, int jogador);

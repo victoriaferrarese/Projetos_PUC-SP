@@ -13,7 +13,7 @@ void menuInicial(PECA* pecas){
 
     switch(opcaoMenu){
 
-        //Jogar
+        //Nova partida
         case 1: 
             menuJogadores(pecas);
             break;
@@ -47,10 +47,12 @@ void menuJogadores(PECA* pecas){
         case 1:
 
             iniciarJogo(pecas);
+            menuJogadorVsJogador(pecas);
             break;
 
         //jogador vs IA
         case 2:
+            iniciarJogo(pecas);
             break;
 
         default:
@@ -59,4 +61,25 @@ void menuJogadores(PECA* pecas){
     }
 
     menuJogadores(pecas);
+}
+
+void menuJogadorVsJogador(PECA* pecas){
+
+    int primeiroJogador = escolherPrimeiroJogador();
+
+    int opcaoJogadorVsJogador;
+    imprimirMenuJogadorVsJogador();
+    scanf("%d", &opcaoJogadorVsJogador);
+
+    switch (opcaoJogadorVsJogador){
+
+    case 1:
+
+        imprimirPecasjogador(pecas,primeiroJogador);
+        
+        break;
+    
+    default:
+        break;
+    }
 }

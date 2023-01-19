@@ -10,7 +10,6 @@ void iniciarJogo(PECA* pecas){
     embaralharPecas(pecas);
     distribuirPecas(pecas);
     
-    imprimirPecas(pecas);
 }
 void inicializarPecas(PECA* pecas){
     
@@ -71,17 +70,36 @@ void distribuirPecas(PECA* pecas){
     }
 }
 
-/*void imprimirPecasjogadores(PECA* pecas){
+int escolherPrimeiroJogador(){
 
-    for(int i = 0; i < 14; i++){
-        if (pecas[i].status == JOGADOR_1){
-            printf("\nPECAS JOGADOR 1 :\n");
-            
+    int primeiroJogador;
+
+    do{
+
+        imprimirEscolherPrimeiroJogador();
+        scanf("%d", &primeiroJogador);
+
+    }while(primeiroJogador > 2 || primeiroJogador < 1);
+
+
+    return primeiroJogador;    
+
+}
+
+void imprimirPecasjogador(PECA* pecas, int jogador){
+
+    imprimirMostrarPecas();
+
+    if(jogador == 1){
+        for(int i = 0; i < 7; i++){
+            printf("[ %d | %d ]\t ", pecas[i].numero1, pecas[i].numero2);
         }
-            
-        else
-            pecas[i].status = JOGADOR_2;
     }
-}*/
+    else {
+        for(int i = 7; i < 14; i++){
+            printf("[ %d | %d ]\t ", pecas[i].numero1, pecas[i].numero2);
+        }
+    }
+}
 
 
