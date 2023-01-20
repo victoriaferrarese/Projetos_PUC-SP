@@ -35,4 +35,4 @@ void distribuirPecas(PECA* pecas);
 int escolherPrimeiroJogador();
 void imprimirPecasjogador(PECA* pecas, PECAS_MESA* mesa);
 void trocarJogador(PECAS_MESA* mesa);
-//int comprarPeca(PECA* pecas, PECAS_MESA* mesa);
+int comprarPeca(PECA* pecas, PECAS_MESA* mesa);

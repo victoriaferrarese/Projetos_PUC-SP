@@ -84,8 +84,8 @@ void menuJogadorVsJogador(PECA* pecas, PECAS_MESA* mesa){
 
         //Comprar uma peca
         case 2:
-            imprimirPecas(pecas);
-            //comprarPeca(pecas, mesa);
+            
+            comprarPeca(pecas, mesa);
             break;
 
         default:

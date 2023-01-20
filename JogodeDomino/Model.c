@@ -94,7 +94,7 @@ void imprimirPecasjogador(PECA* pecas, PECAS_MESA* mesa){
         if(pecas[i].status == mesa->jogadorAtual){
             printf("[ %d | %d ]\t ", pecas[i].numero1, pecas[i].numero2);
         }
-    }
+    } printf("\n");
 }
 
 void trocarJogador(PECAS_MESA* mesa){
@@ -106,7 +106,7 @@ void trocarJogador(PECAS_MESA* mesa){
 
 }
 
-/*int comprarPeca(PECA* pecas, PECAS_MESA* mesa){
+int comprarPeca(PECA* pecas, PECAS_MESA* mesa){
 
     for(int i = 0; i < 28; i++){
 
@@ -122,12 +122,8 @@ void trocarJogador(PECAS_MESA* mesa){
             }
         }
     }
-
-    //todas as pecas da pilha se encontram a partir da posicao 14 no array pecas
-
-    
    
-}*/
+}
 
 /* A FAZER:
 
