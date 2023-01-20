@@ -47,7 +47,9 @@ void menuJogadores(PECA* pecas, PECAS_MESA* mesa){
         case 1:
 
             iniciarJogo(pecas);
+            mesa->jogadorAtual = escolherPrimeiroJogador();
             menuJogadorVsJogador(pecas, mesa);
+
             break;
 
         //jogador vs IA
@@ -64,31 +66,26 @@ void menuJogadores(PECA* pecas, PECAS_MESA* mesa){
 
 void menuJogadorVsJogador(PECA* pecas, PECAS_MESA* mesa){
 
-    int jogador = escolherPrimeiroJogador();
-
     int opcaoJogadorVsJogador;
     imprimirMenuJogadorVsJogador();
     scanf("%d", &opcaoJogadorVsJogador);
+
+    imprimirPecasjogador(pecas, mesa);
 
     switch (opcaoJogadorVsJogador){
 
         //Jogar uma peca
         case 1:
 
-            imprimirPecasjogador(pecas,jogador);
             //permitir jogada
-
-            if(jogador == 1)
-                jogador = 2;
-            else
-                jogador = 1;
-
+            trocarJogador(mesa);
+            
             break;
 
         //Comprar uma peca
         case 2:
-
-            comprarPeca(pecas, mesa, jogador);
+            imprimirPecas(pecas);
+            //comprarPeca(pecas, mesa);
             break;
 
         default:

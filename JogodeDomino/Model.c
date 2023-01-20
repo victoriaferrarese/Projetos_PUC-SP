@@ -28,7 +28,7 @@ void inicializarPecas(PECA* pecas){
 void imprimirPecas(PECA* pecas){
 
     for(int i = 0; i < TOTAL_PECAS; i++){
-        printf("peca %d\t: %d | %d \n", i, pecas[i].numero1, pecas[i].numero2);
+        printf("\nstatus %d\t: %d | %d \n", pecas[i].status, pecas[i].numero1, pecas[i].numero2);
     }
 }
 
@@ -86,33 +86,52 @@ int escolherPrimeiroJogador(){
 
 }
 
-void imprimirPecasjogador(PECA* pecas, int jogador){
+void imprimirPecasjogador(PECA* pecas, PECAS_MESA* mesa){
 
     imprimirMostrarPecas();
 
-    if(jogador == 1){
-        for(int i = 0; i < 7; i++){
-            printf("[ %d | %d ]\t ", pecas[i].numero1, pecas[i].numero2);
-        }
-    }
-    else {
-        for(int i = 7; i < 14; i++){
+    for(int i = 0; i < 28; i++){
+        if(pecas[i].status == mesa->jogadorAtual){
             printf("[ %d | %d ]\t ", pecas[i].numero1, pecas[i].numero2);
         }
     }
 }
 
-/*void comprarPeca(PECA* pecas, PECAS_MESA* Mesa, int jogador){
+void trocarJogador(PECAS_MESA* mesa){
 
-   // PECA pecaParaComprar = peca
+    if(mesa->jogadorAtual == JOGADOR_1)
+        mesa->jogadorAtual = JOGADOR_2;
+    else
+        mesa->jogadorAtual = JOGADOR_1;
 
+}
 
+/*int comprarPeca(PECA* pecas, PECAS_MESA* mesa){
 
+    for(int i = 0; i < 28; i++){
 
+        if(pecas[i].status == PILHA){
+            if(mesa->jogadorAtual == JOGADOR_1){
+                printf("\n Voce comprou essa peca : [ %d | %d ]\n ", pecas[i].numero1, pecas[i].numero2);
+                pecas[i].status = JOGADOR_1;
+                return 1;
+            }
+            else{
+                pecas[i].status = JOGADOR_2;
+                return 1;
+            }
+        }
+    }
+
+    //todas as pecas da pilha se encontram a partir da posicao 14 no array pecas
+
+    
+   
 }*/
 
 /* A FAZER:
 
 *  Permitir jogada (controller.c -> menuJogadorVsJogador -> case 1).
-* atribuir valor à variavel jogador atual no struct mesa
+* 
+
 */

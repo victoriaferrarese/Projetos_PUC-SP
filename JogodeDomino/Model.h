@@ -33,4 +33,6 @@ void imprimirPecas(PECA* pecas);
 void embaralharPecas(PECA* pecas);
 void distribuirPecas(PECA* pecas);
 int escolherPrimeiroJogador();
-void imprimirPecasjogador(PECA* pecas, int jogador);
+void imprimirPecasjogador(PECA* pecas, PECAS_MESA* mesa);
+void trocarJogador(PECAS_MESA* mesa);
+//int comprarPeca(PECA* pecas, PECAS_MESA* mesa);
