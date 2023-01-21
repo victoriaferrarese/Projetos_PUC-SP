@@ -4,3 +4,4 @@ void imprimirMenuJogadorVsJogador();
 void imprimirOpcaoInvalida();
 void imprimirEscolherPrimeiroJogador();
 void imprimirMostrarPecas();
+void imprimirMostrarMesa();

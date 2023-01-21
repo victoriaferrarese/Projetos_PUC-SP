@@ -5,7 +5,7 @@
 #include "Controller.h"
 #include "View.h"
 
-void menuInicial(PECA* pecas, PECAS_MESA* mesa){
+void menuInicial(PECA* pecas, PECA* mesa){
 
     int opcaoMenu;
     imprimirMenuInicial();
@@ -35,7 +35,7 @@ void menuInicial(PECA* pecas, PECAS_MESA* mesa){
 
 }
 
-void menuJogadores(PECA* pecas, PECAS_MESA* mesa){
+void menuJogadores(PECA* pecas, PECA* mesa){
 
     int opcaoMenuJogadores;
     imprimirMenuJogadores();
@@ -48,6 +48,7 @@ void menuJogadores(PECA* pecas, PECAS_MESA* mesa){
 
             iniciarJogo(pecas);
             mesa->jogadorAtual = escolherPrimeiroJogador();
+            //jogarPrimeiraPeca();
             menuJogadorVsJogador(pecas, mesa);
 
             break;
@@ -64,7 +65,7 @@ void menuJogadores(PECA* pecas, PECAS_MESA* mesa){
 
 }
 
-void menuJogadorVsJogador(PECA* pecas, PECAS_MESA* mesa){
+void menuJogadorVsJogador(PECA* pecas, PECA* mesa){
 
     int opcaoJogadorVsJogador;
     imprimirMenuJogadorVsJogador();

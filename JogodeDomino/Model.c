@@ -38,7 +38,7 @@ void embaralharPecas(PECA* pecas){
     int posicaoSorteada;
     PECA variavelAuxiliar; //variavel temporaria 
 
-    for(int i = 0; i < 28; i++){
+    for(int i = 0; i < TOTAL_PECAS; i++){
 
         posicaoSorteada = rand() % 28;
 
@@ -59,7 +59,7 @@ void embaralharPecas(PECA* pecas){
 
 void distribuirPecas(PECA* pecas){
 
-    for(int i = 0; i < 28; i++){
+    for(int i = 0; i < TOTAL_PECAS; i++){
         if (i < 7){
             pecas[i].status = JOGADOR_1;
         } else if (i < 14){
@@ -86,18 +86,35 @@ int escolherPrimeiroJogador(){
 
 }
 
-void imprimirPecasjogador(PECA* pecas, PECAS_MESA* mesa){
+void imprimirPecasjogador(PECA* pecas, PECA* mesa){
 
     imprimirMostrarPecas();
+    int qtdPecas = 0;
 
-    for(int i = 0; i < 28; i++){
+    for(int i = 0; i < TOTAL_PECAS; i++){
         if(pecas[i].status == mesa->jogadorAtual){
             printf("[ %d | %d ]\t ", pecas[i].numero1, pecas[i].numero2);
+            qtdPecas++;
         }
     } printf("\n");
+    
+    for(int j = 0; j <= qtdPecas-1; j++){
+        printf("    (%d)\t\t", j+1);
+    }printf("\n");
+
 }
 
-void trocarJogador(PECAS_MESA* mesa){
+void imprimirMesa(PECA* mesa){
+
+    imprimirMostrarMesa();
+
+    for(int i = 0; i < TOTAL_PECAS; i++){
+            printf("[ %d | %d ]\t ", mesa[i].numero1, mesa[i].numero2);
+        
+    }
+}
+
+void trocarJogador(PECA* mesa){
 
     if(mesa->jogadorAtual == JOGADOR_1)
         mesa->jogadorAtual = JOGADOR_2;
@@ -106,9 +123,9 @@ void trocarJogador(PECAS_MESA* mesa){
 
 }
 
-int comprarPeca(PECA* pecas, PECAS_MESA* mesa){
+int comprarPeca(PECA* pecas, PECA* mesa){
 
-    for(int i = 0; i < 28; i++){
+    for(int i = 0; i < TOTAL_PECAS; i++){
 
         if(pecas[i].status == PILHA){
             if(mesa->jogadorAtual == JOGADOR_1){
@@ -122,12 +139,45 @@ int comprarPeca(PECA* pecas, PECAS_MESA* mesa){
             }
         }
     }
-   
+}
+
+int escolherPeca(PECA* pecas, PECA* mesa){
+
+    int pecaEscolhida;
+    
+    imprimirPecasjogador(pecas,mesa);
+    imprimirEscolherPeca();
+    scanf("%d", &pecaEscolhida);
+
+    return pecaEscolhida;
+
+}
+
+void jogarPrimeiraPeca(PECA* pecas, PECA* mesa){
+
+    int peca = escolherPeca(pecas,mesa);
+    
+    //if(??????)
+
+
+
+
+}
+
+void jogarPeca(PECA* pecas, PECA* mesa){
+
+    imprimirMostrarMesa();
+    imprimirMesa(pecas);
+
+    escolherPeca(pecas,mesa);
+
+    //verificarValidadeDaJogada()
+
 }
 
 /* A FAZER:
 
-*  Permitir jogada (controller.c -> menuJogadorVsJogador -> case 1).
+* 
 * 
 
 */

@@ -32,3 +32,11 @@ void imprimirEscolherPrimeiroJogador(){
 void imprimirMostrarPecas(){
     printf("\n\t\t\t\t\tEssas sao as suas pecas:\n\n ");
 }
+
+void imprimirMostrarMesa(){
+    printf("\n Essa é a mesa da partida:\n");
+}
+
+void imprimirEscolherPeca(){
+    printf("\nDigite o numero da peca que deseja jogar: ");
+}
