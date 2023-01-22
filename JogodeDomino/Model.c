@@ -70,20 +70,60 @@ void distribuirPecas(PECA* pecas){
     }
 }
 
-int escolherPrimeiroJogador(){
+void escolherPrimeiroJogador(PECA* pecas){
 
-    int primeiroJogador;
+    PECA primeiraJogada;
 
-    do{
+    int pecaMaiorJogador1;
+    int pecaMaiorJogador2;
 
-        imprimirEscolherPrimeiroJogador();
-        scanf("%d", &primeiroJogador);
+    PECA jogador1[7];
+    PECA jogador2[7];
 
-    }while(primeiroJogador > 2 || primeiroJogador < 1);
+    //adiciona as pecas dos respectivos jogadores nos arrays criados acima
+    for(int i = 0; i < 14; i++){
+        if (i < 7){
+            pecas[i].numero1 = jogador1[i].numero1;
+            pecas[i].numero2 = jogador1[i].numero2;
+        } else {
+            pecas[i].numero1 = jogador2[i-7].numero1;
+            pecas[i].numero2 = jogador2[i-7].numero2;
+            }
+    }
 
+    int posicaoPecaMaiorJogador1 = encontrarPecaMaior(jogador1, pecas);
+    pecaMaiorJogador1 = jogador1[posicaoPecaMaiorJogador1].numero1;
 
-    return primeiroJogador;    
+    int posicaoPecaMaiorJogador2 = encontrarPecaMaior(jogador2, pecas);
+    pecaMaiorJogador2 = jogador2[posicaoPecaMaiorJogador2].numero1;
 
+    if(pecaMaiorJogador1 > pecaMaiorJogador2){
+        pecas[posicaoPecaMaiorJogador1].status = MESA;    
+    }
+    else 
+        pecas[posicaoPecaMaiorJogador2 + 7].status = MESA;    
+    
+
+}
+
+int encontrarPecaMaior(PECA* jogador, PECA* pecas){
+
+    int posicaoPecaMaior;
+    int pecaMaior = -1;
+
+    for(int i = 0; i < 7; i++){
+        if(jogador[i].numero1 == jogador[i].numero2){
+            if (jogador[i].numero1 > pecaMaior)
+                pecaMaior = jogador[i].numero1;
+                posicaoPecaMaior = i;
+        }
+    }
+
+    if (pecaMaior == -1){
+        return 
+    }
+
+    return posicaoPecaMaior;
 }
 
 void imprimirPecasjogador(PECA* pecas, PECA* mesa){
@@ -177,7 +217,7 @@ void jogarPeca(PECA* pecas, PECA* mesa){
 
 /* A FAZER:
 
-* 
+* refazer toda a primeira jogada
 * 
 
 */

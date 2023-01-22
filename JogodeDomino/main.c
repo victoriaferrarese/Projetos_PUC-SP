@@ -9,6 +9,7 @@ int main(){
 
     PECA pecas[TOTAL_PECAS];
     PECA mesa[TOTAL_PECAS];
+    
 
     menuInicial(pecas, mesa);
 }
