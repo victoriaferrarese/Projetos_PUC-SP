@@ -70,63 +70,9 @@ void distribuirPecas(PECA* pecas){
     }
 }
 
-void escolherPrimeiroJogador(PECA* pecas){
 
-    PECA primeiraJogada;
 
-    int pecaMaiorJogador1;
-    int pecaMaiorJogador2;
-
-    PECA jogador1[7];
-    PECA jogador2[7];
-
-    //adiciona as pecas dos respectivos jogadores nos arrays criados acima
-    for(int i = 0; i < 14; i++){
-        if (i < 7){
-            pecas[i].numero1 = jogador1[i].numero1;
-            pecas[i].numero2 = jogador1[i].numero2;
-        } else {
-            pecas[i].numero1 = jogador2[i-7].numero1;
-            pecas[i].numero2 = jogador2[i-7].numero2;
-            }
-    }
-
-    int posicaoPecaMaiorJogador1 = encontrarPecaMaior(jogador1, pecas);
-    pecaMaiorJogador1 = jogador1[posicaoPecaMaiorJogador1].numero1;
-
-    int posicaoPecaMaiorJogador2 = encontrarPecaMaior(jogador2, pecas);
-    pecaMaiorJogador2 = jogador2[posicaoPecaMaiorJogador2].numero1;
-
-    if(pecaMaiorJogador1 > pecaMaiorJogador2){
-        pecas[posicaoPecaMaiorJogador1].status = MESA;    
-    }
-    else 
-        pecas[posicaoPecaMaiorJogador2 + 7].status = MESA;    
-    
-
-}
-
-int encontrarPecaMaior(PECA* jogador, PECA* pecas){
-
-    int posicaoPecaMaior;
-    int pecaMaior = -1;
-
-    for(int i = 0; i < 7; i++){
-        if(jogador[i].numero1 == jogador[i].numero2){
-            if (jogador[i].numero1 > pecaMaior)
-                pecaMaior = jogador[i].numero1;
-                posicaoPecaMaior = i;
-        }
-    }
-
-    if (pecaMaior == -1){
-        return 
-    }
-
-    return posicaoPecaMaior;
-}
-
-void imprimirPecasjogador(PECA* pecas, PECA* mesa){
+void imprimirPecasjogador(PECA* pecas, PECAS_MESA* mesa){
 
     imprimirMostrarPecas();
     int qtdPecas = 0;
@@ -154,7 +100,7 @@ void imprimirMesa(PECA* mesa){
     }
 }
 
-void trocarJogador(PECA* mesa){
+void trocarJogador( PECAS_MESA* mesa){
 
     if(mesa->jogadorAtual == JOGADOR_1)
         mesa->jogadorAtual = JOGADOR_2;
@@ -163,7 +109,7 @@ void trocarJogador(PECA* mesa){
 
 }
 
-int comprarPeca(PECA* pecas, PECA* mesa){
+int comprarPeca(PECA* pecas, PECAS_MESA* mesa){
 
     for(int i = 0; i < TOTAL_PECAS; i++){
 
@@ -181,6 +127,84 @@ int comprarPeca(PECA* pecas, PECA* mesa){
     }
 }
 
+int encontrarPrimeiroJogador(PECA* pecas, PECA* mesa){
+
+    int posicaoPecaMaiorJ1 = encontrarPecaMaiorJogador1(pecas);
+    int posicaoPecaMaiorJ2 = encontrarPecaMaiorJogador2(pecas);
+    
+    if(posicaoPecaMaiorJ1 == -1 && posicaoPecaMaiorJ2 == -1){
+        escolherPrimeiroJogador(pecas, mesa);
+        jogarPrimeiraPeca(pecas, mesa); //*******************************************
+    }
+    else if(posicaoPecaMaiorJ1 != -1 && posicaoPecaMaiorJ2 == -1){
+        //jogador 1 joga
+    }
+    else if(posicaoPecaMaiorJ1 == -1 && posicaoPecaMaiorJ2 != -1){
+        //jogador 2 joga
+    }
+    else if(pecas[posicaoPecaMaiorJ1].numero1 > pecas[posicaoPecaMaiorJ2].numero1 ){
+        //jogador 1 joga
+    }
+    else{
+        //jogador 2 joga
+    }
+}
+
+int encontrarPecaMaiorJogador1(PECA* pecas){
+
+    int posicaoPecaMaior;
+    int pecaMaior = -1;
+
+    for(int i = 0; i < 7; i++){
+        if(pecas[i].numero1 == pecas[i].numero2){
+            if (pecas[i].numero1 > pecaMaior)
+                pecaMaior = pecas[i].numero1;
+                posicaoPecaMaior = i;
+        }
+    }
+    if(pecaMaior == -1){
+        posicaoPecaMaior = -1;
+    }
+
+    return posicaoPecaMaior;
+} 
+
+int encontrarPecaMaiorJogador2(PECA* pecas){
+
+    int posicaoPecaMaior;
+    int pecaMaior = -1;
+
+    for(int i = 7; i < 14; i++){
+        if(pecas[i].numero1 == pecas[i].numero2){
+            if (pecas[i].numero1 > pecaMaior)
+                pecaMaior = pecas[i].numero1;
+                posicaoPecaMaior = i;
+        }
+    }
+    if(pecaMaior == -1){
+        posicaoPecaMaior = -1;
+    }
+
+    return posicaoPecaMaior;
+} 
+
+void escolherPrimeiroJogador(PECA* pecas, PECAS_MESA* mesa){
+
+    int primeiroJogador;
+
+    do{
+
+        imprimirEscolherPrimeiroJogador();
+        scanf("%d",&primeiroJogador);
+
+    }while(primeiroJogador > 2 || primeiroJogador < 1);
+
+    if(primeiroJogador == 1)
+        mesa->jogadorAtual = JOGADOR_1; 
+    else
+        mesa->jogadorAtual = JOGADOR_2;
+}
+
 int escolherPeca(PECA* pecas, PECA* mesa){
 
     int pecaEscolhida;
@@ -193,13 +217,12 @@ int escolherPeca(PECA* pecas, PECA* mesa){
 
 }
 
+
 void jogarPrimeiraPeca(PECA* pecas, PECA* mesa){
 
     int peca = escolherPeca(pecas,mesa);
     
-    //if(??????)
-
-
+    
 
 
 }

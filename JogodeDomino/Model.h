@@ -12,18 +12,18 @@ struct pecaInfo{
     int numero1;
     int numero2;
     char status; //indica se a peca esta na mesa, com jogador1, com o jogador2 ou na pilha de compra
-    int jogadorAtual;
+    
 };
 typedef struct pecaInfo PECA;
 
-/*struct Mesa{
+struct Mesa{
 
     int lado1; 
     int lado2;
-    
+    int jogadorAtual;
 
 };
-typedef struct Mesa PECAS_MESA;*/
+typedef struct Mesa PECAS_MESA;
 
 #endif
 
@@ -32,7 +32,7 @@ void inicializarPecas(PECA* pecas);
 void imprimirPecas(PECA* pecas);
 void embaralharPecas(PECA* pecas);
 void distribuirPecas(PECA* pecas);
-int escolherPrimeiroJogador();
-void imprimirPecasjogador(PECA* pecas, PECA* mesa);
-void trocarJogador(PECA* mesa);
-int comprarPeca(PECA* pecas, PECA* mesa);
+void escolherPrimeiroJogador(PECA* pecas, PECAS_MESA* mesa);
+void imprimirPecasjogador(PECA* pecas, PECAS_MESA* mesa);
+void trocarJogador( PECAS_MESA* mesa);
+int comprarPeca(PECA* pecas, PECAS_MESA* mesa);
