@@ -47,8 +47,7 @@ void menuJogadores(PECA* pecas, PECAS_MESA* mesa){
         case 1:
 
             iniciarJogo(pecas);
-            mesa->jogadorAtual = escolherPrimeiroJogador();
-            //jogarPrimeiraPeca();
+            encontrarPrimeiroJogador(pecas, mesa);
             menuJogadorVsJogador(pecas, mesa);
 
             break;

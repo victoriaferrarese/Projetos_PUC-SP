@@ -20,6 +20,7 @@ struct Mesa{
 
     int lado1; 
     int lado2;
+    int contMesa;
     int jogadorAtual;
 
 };
@@ -32,7 +33,14 @@ void inicializarPecas(PECA* pecas);
 void imprimirPecas(PECA* pecas);
 void embaralharPecas(PECA* pecas);
 void distribuirPecas(PECA* pecas);
-void escolherPrimeiroJogador(PECA* pecas, PECAS_MESA* mesa);
 void imprimirPecasjogador(PECA* pecas, PECAS_MESA* mesa);
+void imprimirMesa(PECA* mesa);
 void trocarJogador( PECAS_MESA* mesa);
 int comprarPeca(PECA* pecas, PECAS_MESA* mesa);
+void encontrarPrimeiroJogador(PECA* pecas, PECAS_MESA* mesa);
+int encontrarPecaMaiorJogador1(PECA* pecas);
+int encontrarPecaMaiorJogador2(PECA* pecas);
+void escolherPrimeiroJogador(PECA* pecas, PECAS_MESA* mesa);
+int escolherPeca(PECA* pecas, PECAS_MESA* mesa);
+void separarPecasJogadores(PECA* pecas, PECAS_MESA* mesa);
+void jogarPrimeiraPeca(PECA* pecas, PECAS_MESA* mesa, PECA* maoJogador);
