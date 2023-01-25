@@ -48,6 +48,7 @@ void menuJogadores(PECA* pecas, PECAS_MESA* mesa){
 
             iniciarJogo(pecas);
             encontrarPrimeiroJogador(pecas, mesa);
+            //printf("%d", mesa->jogadorAtual);
             menuJogadorVsJogador(pecas, mesa);
 
             break;

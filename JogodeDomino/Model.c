@@ -72,7 +72,7 @@ void distribuirPecas(PECA* pecas){
 
 void imprimirPecasjogador(PECA* pecas, PECAS_MESA* mesa){
 
-    imprimirMostrarPecas();
+    printf("\n\t\t\t\t\tEssas sao as suas pecas jogador %d:\n\n ", mesa->jogadorAtual);
     int qtdPecas = 0;
 
     for(int i = 0; i < TOTAL_PECAS; i++){
@@ -88,12 +88,13 @@ void imprimirPecasjogador(PECA* pecas, PECAS_MESA* mesa){
 
 }
 
-void imprimirMesa(PECA* mesa){
+void imprimirMesa(PECA* pecas){
 
     imprimirMostrarMesa();
 
     for(int i = 0; i < TOTAL_PECAS; i++){
-            printf("[ %d | %d ]\t ", mesa[i].numero1, mesa[i].numero2);
+            if(pecas[i].status == MESA)
+                printf("[ %d | %d ]\t ", pecas[i].numero1, pecas[i].numero2);
         
     }
 }
@@ -133,34 +134,44 @@ void encontrarPrimeiroJogador(PECA* pecas, PECAS_MESA* mesa){
     
     //caso nenhum dos jogadores tenha uma peca com dois lados iguais (jogadores escolhem quem comeca a partida)
     if(posicaoPecaMaiorJ1 == -1 && posicaoPecaMaiorJ2 == -1){
+        
         escolherPrimeiroJogador(pecas, mesa);
         separarPecasJogadores(pecas, mesa);
     }
 
     //caso o jogador 1 seja o unico que tenha uma peca com dois lados iguais (jogador 1 comeca a partida)
     else if(posicaoPecaMaiorJ1 != -1 && posicaoPecaMaiorJ2 == -1){
+        
         mesa->jogadorAtual = JOGADOR_1;
+        imprimirJogador1Comeca();
         separarPecasJogadores(pecas, mesa);
     }
 
     //caso o jogador 2 seja o unico que tenha uma peca com dois lados iguais (jogador 2 comeca a partida)
     else if(posicaoPecaMaiorJ1 == -1 && posicaoPecaMaiorJ2 != -1){
+       
         mesa->jogadorAtual = JOGADOR_2;
+        imprimirJogador2Comeca();
         separarPecasJogadores(pecas, mesa);
 
     }
 
     //caso a peca do jogador 1 seja maior que a peca do jogador 2 (jogador 1 comeca)
     else if(pecas[posicaoPecaMaiorJ1].numero1 > pecas[posicaoPecaMaiorJ2].numero1 ){
+        
         mesa->jogadorAtual = JOGADOR_1;
+        imprimirJogador1Comeca();
         separarPecasJogadores(pecas, mesa);
     }
 
     //caso a peca do jogador 2 seja maior que a peca do jogador 1 (jogador 2 comeca)
     else{
+       
         mesa->jogadorAtual = JOGADOR_2;
+        imprimirJogador2Comeca();
         separarPecasJogadores(pecas, mesa);
     }
+
 }
 
 int encontrarPecaMaiorJogador1(PECA* pecas){
@@ -177,6 +188,7 @@ int encontrarPecaMaiorJogador1(PECA* pecas){
     }
     if(pecaMaior == -1){
         posicaoPecaMaior = -1;
+    
     }
 
     return posicaoPecaMaior;
@@ -242,30 +254,31 @@ void separarPecasJogadores(PECA* pecas, PECAS_MESA* mesa){
 
     for(int i = 0; i < TOTAL_PECAS; i ++){
         if (pecas[i].status == JOGADOR_1){
-            pecas[i].numero1 = maoJogador1[contJ1].numero1;
-            pecas[i].numero2 = maoJogador1[contJ1].numero2;
+            maoJogador1[contJ1].numero1 = pecas[i].numero1;
+            maoJogador1[contJ1].numero2 = pecas[i].numero2;
             contJ1++;
         }
         else if(pecas[i].status == JOGADOR_2){
-            pecas[i].numero1 = maoJogador2[contJ2].numero1;
-            pecas[i].numero2 = maoJogador2[contJ2].numero2;
+            maoJogador2[contJ2].numero1 = pecas[i].numero1;
+            maoJogador2[contJ2].numero2 = pecas[i].numero2;
             contJ2++;
         }    
     }
 
     if(mesa->jogadorAtual == JOGADOR_1)
-        jogarPrimeiraPeca(pecas, mesa, maoJogador1);
+        jogarPrimeiraPeca(pecas, mesa, maoJogador1, contJ1);
     else 
-        jogarPrimeiraPeca(pecas ,mesa, maoJogador2);
+        jogarPrimeiraPeca(pecas ,mesa, maoJogador2, contJ2);
 }
 
-void jogarPrimeiraPeca(PECA* pecas, PECAS_MESA* mesa, PECA* maoJogador){
+void jogarPrimeiraPeca(PECA* pecas, PECAS_MESA* mesa, PECA* maoJogador, int qtdPecas){
     
     int pecaSelecionada = escolherPeca(pecas,mesa);
 
-    for(int i = 0; i < TOTAL_PECAS; i++){
+    for(int i = 0; i < qtdPecas; i++){
         if (pecas[i].numero1 == maoJogador[pecaSelecionada].numero1 && pecas[i].numero2 == maoJogador[pecaSelecionada].numero2){
             pecas[i].status = MESA;
+            //printf("status da peca escolhida: %d", pecas[i].status);
             mesa->contMesa = 1;
             mesa->lado1 = maoJogador[pecaSelecionada].numero1;
             mesa->lado2 = maoJogador[pecaSelecionada].numero2;
@@ -288,7 +301,7 @@ void jogarPrimeiraPeca(PECA* pecas, PECAS_MESA* mesa, PECA* maoJogador){
 
 /* A FAZER:
 
-* compilar e arrumar os erros (se existentes)
+* bug na mudanca de status da peca ao jogar a primeira peca da partida -> jogarPrimeiraPeca
 * 
 
 */

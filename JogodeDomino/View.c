@@ -29,14 +29,18 @@ void imprimirEscolherPrimeiroJogador(){
     printf("Digite qual jogador comecara a partida (1 ou 2): ");
 }
 
-void imprimirMostrarPecas(){
-    printf("\n\t\t\t\t\tEssas sao as suas pecas:\n\n ");
-}
-
 void imprimirMostrarMesa(){
-    printf("\n Essa é a mesa da partida:\n");
+    printf("\n\t\t\t\t\tEssa eh a mesa da partida:\n");
 }
 
 void imprimirEscolherPeca(){
     printf("\nDigite o numero da peca que deseja jogar: ");
+}
+
+void imprimirJogador1Comeca(){
+    printf("\n O jogador 1 possui a maior peca do jogo, logo ele deve comecar a partida.\n");
+}
+
+void imprimirJogador2Comeca(){
+    printf("\n O jogador 2 possui a maior peca do jogo, logo ele deve comecar a partida.\n");
 }
