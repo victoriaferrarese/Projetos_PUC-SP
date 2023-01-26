@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 #include "Model.h"
 #include "View.h"
 #include "Controller.h"
@@ -129,6 +130,7 @@ int comprarPeca(PECA* pecas, PECAS_MESA* mesa){
 //O primeiro jogador eh aquele que possui a maior peca que contem os dois numeros iguais
 void encontrarPrimeiroJogador(PECA* pecas, PECAS_MESA* mesa){
 
+    primeiraJogada(1);
     int posicaoPecaMaiorJ1 = encontrarPecaMaiorJogador1(pecas);
     int posicaoPecaMaiorJ2 = encontrarPecaMaiorJogador2(pecas);
     
@@ -242,6 +244,16 @@ int escolherPeca(PECA* pecas, PECAS_MESA* mesa){
 
 }
 
+//se a for a primeira jogada retorna true senao retorna false 
+int primeiraJogada(int jogada){
+    if(jogada == 0){
+        return 0;
+    }else {
+        return 1;
+    }
+    
+}
+
 //criando um array para a mao de cada um dos jogadores 
 void separarPecasJogadores(PECA* pecas, PECAS_MESA* mesa){
 
@@ -265,10 +277,19 @@ void separarPecasJogadores(PECA* pecas, PECAS_MESA* mesa){
         }    
     }
 
-    if(mesa->jogadorAtual == JOGADOR_1)
-        jogarPrimeiraPeca(pecas, mesa, maoJogador1, contJ1);
-    else 
-        jogarPrimeiraPeca(pecas ,mesa, maoJogador2, contJ2);
+    if(!primeiraJogada){
+        if(mesa->jogadorAtual == JOGADOR_1)
+            jogarPeca(pecas, mesa, maoJogador1, contJ1);
+        else 
+            jogarPeca(pecas ,mesa, maoJogador2, contJ2);
+    }else{
+        if(mesa->jogadorAtual == JOGADOR_1)
+            jogarPrimeiraPeca(pecas, mesa, maoJogador1, contJ1);
+        else 
+            jogarPrimeiraPeca(pecas ,mesa, maoJogador2, contJ2);
+
+    }
+    
 }
 
 void jogarPrimeiraPeca(PECA* pecas, PECAS_MESA* mesa, PECA* maoJogador, int qtdPecas){
@@ -278,30 +299,28 @@ void jogarPrimeiraPeca(PECA* pecas, PECAS_MESA* mesa, PECA* maoJogador, int qtdP
     for(int i = 0; i < qtdPecas; i++){
         if (pecas[i].numero1 == maoJogador[pecaSelecionada].numero1 && pecas[i].numero2 == maoJogador[pecaSelecionada].numero2){
             pecas[i].status = MESA;
-            //printf("status da peca escolhida: %d", pecas[i].status);
             mesa->contMesa = 1;
             mesa->lado1 = maoJogador[pecaSelecionada].numero1;
             mesa->lado2 = maoJogador[pecaSelecionada].numero2;
         }
     }
+    primeiraJogada(0);
 
     imprimirMesa(pecas);
 }
 
-/*void jogarPeca(PECA* pecas, PECA* mesa){
+void jogarPeca(PECA* pecas, PECA* mesa, PECA* maoJogador, int qtdPecas){
 
-    imprimirMostrarMesa();
-    imprimirMesa(pecas);
-
+    separarPecasJogadores(pecas, mesa);
     escolherPeca(pecas,mesa);
 
-    //verificarValidadeDaJogada()
+    validarJogada(pecas,mesa);
 
-}*/
+}
 
 /* A FAZER:
 
-* bug na mudanca de status da peca ao jogar a primeira peca da partida -> jogarPrimeiraPeca
+* refazer PrimeiraJogada
 * 
 
 */

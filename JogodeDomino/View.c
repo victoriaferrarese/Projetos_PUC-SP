@@ -17,7 +17,7 @@ void imprimirMenuJogadores(){
 }
 
 void imprimirMenuJogadorVsJogador(){
-    printf("\nO que deseja fazer?\n");
+    printf("\n\nO que deseja fazer?\n");
     printf("[1] Jogar uma peca\n");
     printf("[2] Comprar uma peca\n");
 }

@@ -48,7 +48,6 @@ void menuJogadores(PECA* pecas, PECAS_MESA* mesa){
 
             iniciarJogo(pecas);
             encontrarPrimeiroJogador(pecas, mesa);
-            //printf("%d", mesa->jogadorAtual);
             menuJogadorVsJogador(pecas, mesa);
 
             break;
@@ -67,11 +66,11 @@ void menuJogadores(PECA* pecas, PECAS_MESA* mesa){
 
 void menuJogadorVsJogador(PECA* pecas,PECAS_MESA* mesa){
 
+    imprimirPecasjogador(pecas, mesa);
+
     int opcaoJogadorVsJogador;
     imprimirMenuJogadorVsJogador();
     scanf("%d", &opcaoJogadorVsJogador);
-
-    imprimirPecasjogador(pecas, mesa);
 
     switch (opcaoJogadorVsJogador){
 

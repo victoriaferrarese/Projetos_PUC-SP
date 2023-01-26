@@ -44,3 +44,4 @@ void escolherPrimeiroJogador(PECA* pecas, PECAS_MESA* mesa);
 int escolherPeca(PECA* pecas, PECAS_MESA* mesa);
 void separarPecasJogadores(PECA* pecas, PECAS_MESA* mesa);
 void jogarPrimeiraPeca(PECA* pecas, PECAS_MESA* mesa, PECA* maoJogador, int qtdPecas);
+int primeiraJogada(int jogada);
