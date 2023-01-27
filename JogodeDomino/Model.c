@@ -244,16 +244,6 @@ int escolherPeca(PECA* pecas, PECAS_MESA* mesa){
 
 }
 
-//se a for a primeira jogada retorna true senao retorna false 
-int primeiraJogada(int jogada){
-    if(jogada == 0){
-        return 0;
-    }else {
-        return 1;
-    }
-    
-}
-
 //criando um array para a mao de cada um dos jogadores 
 void separarPecasJogadores(PECA* pecas, PECAS_MESA* mesa){
 
@@ -277,36 +267,31 @@ void separarPecasJogadores(PECA* pecas, PECAS_MESA* mesa){
         }    
     }
 
-    if(!primeiraJogada){
-        if(mesa->jogadorAtual == JOGADOR_1)
-            jogarPeca(pecas, mesa, maoJogador1, contJ1);
-        else 
-            jogarPeca(pecas ,mesa, maoJogador2, contJ2);
-    }else{
-        if(mesa->jogadorAtual == JOGADOR_1)
-            jogarPrimeiraPeca(pecas, mesa, maoJogador1, contJ1);
-        else 
-            jogarPrimeiraPeca(pecas ,mesa, maoJogador2, contJ2);
-
-    }
     
+    if(mesa->jogadorAtual == JOGADOR_1)
+        jogarPrimeiraPeca(pecas, mesa, maoJogador1, contJ1);
+    else 
+        jogarPrimeiraPeca(pecas ,mesa, maoJogador2, contJ2);
+
 }
 
 void jogarPrimeiraPeca(PECA* pecas, PECAS_MESA* mesa, PECA* maoJogador, int qtdPecas){
     
     int pecaSelecionada = escolherPeca(pecas,mesa);
 
-    for(int i = 0; i < qtdPecas; i++){
-        if (pecas[i].numero1 == maoJogador[pecaSelecionada].numero1 && pecas[i].numero2 == maoJogador[pecaSelecionada].numero2){
+    if(mesa->contMesa == 0){
+        for(int i = 0; i < qtdPecas; i++){
+            if (pecas[i].numero1 == maoJogador[pecaSelecionada].numero1 && pecas[i].numero2 == maoJogador[pecaSelecionada].numero2){
             pecas[i].status = MESA;
-            mesa->contMesa = 1;
-            mesa->lado1 = maoJogador[pecaSelecionada].numero1;
+            mesa->contMesa++;
+            mesa->lado1 = pecas[pecaSelecionada].numero1;
             mesa->lado2 = maoJogador[pecaSelecionada].numero2;
-        }
+            }
+        }imprimirMesa(pecas);
+    }else {
+        
     }
-    primeiraJogada(0);
 
-    imprimirMesa(pecas);
 }
 
 void jogarPeca(PECA* pecas, PECA* mesa, PECA* maoJogador, int qtdPecas){
@@ -314,7 +299,7 @@ void jogarPeca(PECA* pecas, PECA* mesa, PECA* maoJogador, int qtdPecas){
     separarPecasJogadores(pecas, mesa);
     escolherPeca(pecas,mesa);
 
-    validarJogada(pecas,mesa);
+    
 
 }
 
