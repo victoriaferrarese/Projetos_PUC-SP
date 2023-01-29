@@ -93,10 +93,10 @@ void imprimirMesa(PECA* mesa, INFO_GERAL* partida){
 
     imprimirMostrarMesa();
 
-    //for(int i = 0; i < partida->contMesa; i++){
+    for(int i = 0; i < partida->contMesa; i++){
 
-        printf("[ %d | %d ]\t ", mesa[0].numero1, mesa[0].numero2);
-    //}
+        printf("[ %d | %d ]\t ", mesa[i].numero1, mesa[i].numero2);
+    }
 }
 
 void trocarJogador(INFO_GERAL* partida){
@@ -295,7 +295,7 @@ void atualizarMesaPrimeiraJogada(PECA* pecas, PECA* mesa, INFO_GERAL* partida, P
    
 }
 
-/*void jogarPeca(PECA* pecas, INFO_GERAL* partida){
+void jogarPeca(PECA* pecas, INFO_GERAL* partida, PECA* mesa){
 
     PECA* maoJogador[TOTAL_PECAS];
     int contPecas;
@@ -320,33 +320,68 @@ void atualizarMesaPrimeiraJogada(PECA* pecas, PECA* mesa, INFO_GERAL* partida, P
         }
     }
 
-    atualiazarMesa(pecas, partida, maoJogador, contPecas);
+    atualiazarMesa(pecas, mesa, partida, maoJogador, contPecas);
 }
 
-void atualizarMesa(PECA* pecas, INFO_GERAL* partida, PECA* maoJogador, int qtdPecas){
-    
+void atualizarMesa(PECA* pecas, PECA* mesa, INFO_GERAL* partida, PECA* maoJogador, int qtdPecas){
+
+    //armazenando os numeros correspondentes as duas extremidades da mesa 
+    int mesaLado1 = mesa[0].numero1;
+    int mesaLado2 = mesa[partida->contMesa - 1].numero2;
+
     int pecaSelecionada = escolherPeca(pecas,partida);
 
     for(int i = 0; i < qtdPecas; i++){
-        //achando a peca jogada pelo jogador no array pecas
+        //localizando a peca selecionada pelo jogador no array PECA pecas
         if (pecas[i].numero1 == maoJogador[pecaSelecionada].numero1 && pecas[i].numero2 == maoJogador[pecaSelecionada].numero2){
             
-            if(pecas[i].numero1 == mesa-> lado1){ // *********************
-                pecas[i].status = MESA;
-                partida->contMesa++;
-                //mesa->lado1 = maoJogador[pecaSelecionada].numero1;
-                //mesa->lado2 = maoJogador[pecaSelecionada].numero2;
-            }
-            
-        }
-    }imprimirMesa(pecas);
+            validarJogada(pecas, mesa, i, mesaLado1, mesaLado2);
+            organizarMesa(pecas, mesa, partida, i, mesaLado1, mesaLado2); //organizar o array mesa
+
+            }  
+    }
+    
+    imprimirMesa(mesa, partida);
    
 }
-*/
+
+void JogadaInvalida(PECA* pecas, PECA* mesa, int posicaoPecaJogada, int mesaLado1, int mesaLado2){
+
+
+
+    //caso a peca jogada nao tenha o mesmo numero de nenhuma das extremidades da mesa a funcao retorna verdadeira
+    return pecas[posicaoPecaJogada].numero1 != mesaLado1 && pecas[posicaoPecaJogada].numero1 != mesaLado2 && pecas[posicaoPecaJogada].numero2 != mesaLado1 && pecas[posicaoPecaJogada].numero2 != mesaLado2;
+
+}
+
+void organizarMesa(PECA* pecas, PECA* mesa, INFO_GERAL* partida, int posicaoPecaJogada, int mesaLado1, int mesaLado2){
+
+    //caso o numero 1 da peca jogada seja igual ao lado 1 da mesa
+    if(pecas[posicaoPecaJogada].numero1 == mesaLado1){
+        
+        //
+    }
+
+    //caso o numero 1 da peca jogada seja igual ao lado 2 da mesa
+    else if(pecas[posicaoPecaJogada].numero1 == mesaLado2){
+
+    }
+
+    //caso o numero 2 da peca jogada seja igual ao lado 1 da mesa
+    else if(pecas[posicaoPecaJogada].numero2 == mesaLado1){
+
+    }
+
+    //caso o numero 2 da peca jogada seja igual ao lado 2 da mesa
+    else{
+
+    }
+}
+
 
 /* A FAZER:
 
 * atualizar imprimir mesa
-* 
+*
 
 */

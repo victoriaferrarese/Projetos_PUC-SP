@@ -14,10 +14,3 @@ int main(){
 
     menuInicial(pecas, partida, mesa);
 }
-
-
-/*
-PECAS_MESA mesa -> PECA mesa
-
-
-*/
