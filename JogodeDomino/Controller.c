@@ -5,7 +5,7 @@
 #include "Controller.h"
 #include "View.h"
 
-void menuInicial(PECA* pecas, PECAS_MESA* mesa){
+void menuInicial(PECA* pecas, INFO_GERAL* partida, PECA* mesa){
 
     int opcaoMenu;
     imprimirMenuInicial();
@@ -15,7 +15,7 @@ void menuInicial(PECA* pecas, PECAS_MESA* mesa){
 
         //Nova partida
         case 1: 
-            menuJogadores(pecas, mesa);
+            menuJogadores(pecas, partida, mesa);
             break;
 
         //
@@ -31,11 +31,11 @@ void menuInicial(PECA* pecas, PECAS_MESA* mesa){
 
     }
 
-     menuInicial(pecas, mesa);
+     menuInicial(pecas, partida, mesa);
 
 }
 
-void menuJogadores(PECA* pecas, PECAS_MESA* mesa){
+void menuJogadores(PECA* pecas, INFO_GERAL* partida, PECA* mesa){
 
     int opcaoMenuJogadores;
     imprimirMenuJogadores();
@@ -47,8 +47,8 @@ void menuJogadores(PECA* pecas, PECAS_MESA* mesa){
         case 1:
 
             iniciarJogo(pecas);
-            encontrarPrimeiroJogador(pecas, mesa);
-            menuJogadorVsJogador(pecas, mesa);
+            encontrarPrimeiroJogador(pecas, partida, mesa);
+            menuJogadorVsJogador(pecas, partida);
 
             break;
 
@@ -64,9 +64,9 @@ void menuJogadores(PECA* pecas, PECAS_MESA* mesa){
 
 }
 
-void menuJogadorVsJogador(PECA* pecas,PECAS_MESA* mesa){
+void menuJogadorVsJogador(PECA* pecas,INFO_GERAL* partida){
 
-    imprimirPecasjogador(pecas, mesa);
+    imprimirPecasjogador(pecas, partida);
 
     int opcaoJogadorVsJogador;
     imprimirMenuJogadorVsJogador();
@@ -78,14 +78,14 @@ void menuJogadorVsJogador(PECA* pecas,PECAS_MESA* mesa){
         case 1:
 
             //permitir jogada
-            trocarJogador(mesa);
+            trocarJogador(partida);
             
             break;
 
         //Comprar uma peca
         case 2:
             
-            comprarPeca(pecas, mesa);
+            comprarPeca(pecas, partida);
             break;
 
         default:
@@ -94,5 +94,5 @@ void menuJogadorVsJogador(PECA* pecas,PECAS_MESA* mesa){
             break;
     }
 
-    menuJogadorVsJogador(pecas, mesa);
+    menuJogadorVsJogador(pecas, partida);
 }

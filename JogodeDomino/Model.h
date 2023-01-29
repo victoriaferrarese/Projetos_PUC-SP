@@ -16,15 +16,13 @@ struct pecaInfo{
 };
 typedef struct pecaInfo PECA;
 
-struct Mesa{
+struct partidaInfo{
 
-    int lado1; 
-    int lado2;
     int contMesa;
     int jogadorAtual;
 
 };
-typedef struct Mesa PECAS_MESA;
+typedef struct partidaInfo INFO_GERAL;
 
 #endif
 
@@ -33,15 +31,17 @@ void inicializarPecas(PECA* pecas);
 void imprimirPecas(PECA* pecas);
 void embaralharPecas(PECA* pecas);
 void distribuirPecas(PECA* pecas);
-void imprimirPecasjogador(PECA* pecas, PECAS_MESA* mesa);
-void imprimirMesa(PECA* pecas);
-void trocarJogador( PECAS_MESA* mesa);
-int comprarPeca(PECA* pecas, PECAS_MESA* mesa);
-void encontrarPrimeiroJogador(PECA* pecas, PECAS_MESA* mesa);
+void imprimirPecasjogador(PECA* pecas, INFO_GERAL* partida);
+void imprimirMesa(PECA* mesa, INFO_GERAL* partida);
+void trocarJogador(INFO_GERAL* partida);
+int comprarPeca(PECA* pecas, INFO_GERAL* partida);
+void encontrarPrimeiroJogador(PECA* pecas, INFO_GERAL* partida, PECA* mesa);
 int encontrarPecaMaiorJogador1(PECA* pecas);
 int encontrarPecaMaiorJogador2(PECA* pecas);
-void escolherPrimeiroJogador(PECA* pecas, PECAS_MESA* mesa);
-int escolherPeca(PECA* pecas, PECAS_MESA* mesa);
-void atualizarMesaPrimeiraJogada(PECA* pecas, PECAS_MESA* mesa, PECA* maoJogador, int qtdPecas);
-void jogarPrimeiraPeca(PECA* pecas, PECAS_MESA* mesa);
-void separarPecasJogador(PECA* pecas, PECAS_MESA* mesa, PECA* maoJogador, int contPecas);
+void escolherPrimeiroJogador(PECA* pecas, INFO_GERAL* partida);
+int escolherPeca(PECA* pecas, INFO_GERAL* partida);
+void atualizarMesaPrimeiraJogada(PECA* pecas, PECA* mesa, INFO_GERAL* partida, PECA* maoJogador, int qtdPecas);
+void jogarPrimeiraPeca(PECA* pecas, INFO_GERAL* partida, PECA* mesa);
+
+//void jogarPeca(PECA* pecas, INFO_GERAL* partida);
+//void atualizarMesa(PECA* pecas, INFO_GERAL* partida, PECA* maoJogador, int qtdPecas);

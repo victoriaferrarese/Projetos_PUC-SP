@@ -1,7 +1,7 @@
 #ifdef _PECA_
 
-void menuInicial(PECA* pecas, PECAS_MESA* mesa);
-void menuJogadores(PECA* pecas, PECAS_MESA* mesa);
-void menuJogadorVsJogador(PECA* pecas, PECAS_MESA* mesa);
+void menuInicial(PECA* pecas, INFO_GERAL* partida, PECA* mesa);
+void menuJogadores(PECA* pecas, INFO_GERAL* partida, PECA* mesa);
+void menuJogadorVsJogador(PECA* pecas, INFO_GERAL* partida);
 
 #endif
