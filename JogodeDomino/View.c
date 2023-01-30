@@ -38,5 +38,5 @@ void imprimirJogador2Comeca(){
     printf("\n O jogador 2 possui a maior peca do jogo, logo ele deve comecar a partida.\n");
 }
 void imprimirPecaInvalida(){
-    printf("\n A peca selecionada eh invalida!");
+    printf("\n A peca selecionada eh invalida!!\n");
 }

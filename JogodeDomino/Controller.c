@@ -67,6 +67,8 @@ void menuJogadores(PECA* pecas, INFO_GERAL* partida, PECA* mesa){
 
 void menuJogadorVsJogador(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
 
+    system("cls");
+    imprimirMesa(mesa, partida);
     imprimirPecasjogador(pecas, partida);
 
     int opcaoJogadorVsJogador;
@@ -79,7 +81,7 @@ void menuJogadorVsJogador(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
         //Jogar uma peca
         case 1:
 
-            jogarPeca(pecas, partida, mesa); //********************
+            jogarPeca(pecas, partida, mesa); 
             trocarJogador(partida);
             
             break;

@@ -298,8 +298,7 @@ void atualizarMesaPrimeiraJogada(PECA* pecas, PECA* mesa, INFO_GERAL* partida, P
             
             break;
         }
-    }imprimirMesa(mesa, partida);
-   
+    } 
 }
 
 void jogarPeca(PECA* pecas, INFO_GERAL* partida, PECA* mesa){
@@ -354,8 +353,6 @@ void atualizarMesa(PECA* pecas, PECA* mesa, INFO_GERAL* partida, PECA* maoJogado
         jogarPeca(pecas, partida, mesa);
 
     }
-    imprimirMesa(mesa, partida);
-   
 }
 
 int JogadaInvalida(PECA* maoJogador, PECA* mesa, int posicaoPecaJogada, int mesaLado1, int mesaLado2){
