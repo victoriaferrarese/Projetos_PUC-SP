@@ -18,7 +18,7 @@ void menuInicial(PECA* pecas, INFO_GERAL* partida, PECA* mesa){
             menuJogadores(pecas, partida, mesa);
             break;
 
-        //
+        //Carregar Partida Salva
         case 2:
 
             
@@ -48,7 +48,8 @@ void menuJogadores(PECA* pecas, INFO_GERAL* partida, PECA* mesa){
 
             iniciarJogo(pecas);
             encontrarPrimeiroJogador(pecas, partida, mesa);
-            menuJogadorVsJogador(pecas, partida);
+            trocarJogador(partida);
+            menuJogadorVsJogador(pecas, mesa, partida);
 
             break;
 
@@ -64,11 +65,12 @@ void menuJogadores(PECA* pecas, INFO_GERAL* partida, PECA* mesa){
 
 }
 
-void menuJogadorVsJogador(PECA* pecas,INFO_GERAL* partida){
+void menuJogadorVsJogador(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
 
     imprimirPecasjogador(pecas, partida);
 
     int opcaoJogadorVsJogador;
+    imprimirescolherOpcaoMenu(partida);
     imprimirMenuJogadorVsJogador();
     scanf("%d", &opcaoJogadorVsJogador);
 
@@ -77,7 +79,7 @@ void menuJogadorVsJogador(PECA* pecas,INFO_GERAL* partida){
         //Jogar uma peca
         case 1:
 
-            //permitir jogada
+            jogarPeca(pecas, partida, mesa); //********************
             trocarJogador(partida);
             
             break;
@@ -94,5 +96,5 @@ void menuJogadorVsJogador(PECA* pecas,INFO_GERAL* partida){
             break;
     }
 
-    menuJogadorVsJogador(pecas, partida);
+    menuJogadorVsJogador(pecas, mesa, partida);
 }

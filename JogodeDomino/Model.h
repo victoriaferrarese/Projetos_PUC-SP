@@ -34,14 +34,23 @@ void distribuirPecas(PECA* pecas);
 void imprimirPecasjogador(PECA* pecas, INFO_GERAL* partida);
 void imprimirMesa(PECA* mesa, INFO_GERAL* partida);
 void trocarJogador(INFO_GERAL* partida);
-int comprarPeca(PECA* pecas, INFO_GERAL* partida);
+void comprarPeca(PECA* pecas, INFO_GERAL* partida);
 void encontrarPrimeiroJogador(PECA* pecas, INFO_GERAL* partida, PECA* mesa);
 int encontrarPecaMaiorJogador1(PECA* pecas);
 int encontrarPecaMaiorJogador2(PECA* pecas);
 void escolherPrimeiroJogador(PECA* pecas, INFO_GERAL* partida);
+void imprimirescolherOpcaoMenu(INFO_GERAL* partida);
 int escolherPeca(PECA* pecas, INFO_GERAL* partida);
 void atualizarMesaPrimeiraJogada(PECA* pecas, PECA* mesa, INFO_GERAL* partida, PECA* maoJogador, int qtdPecas);
 void jogarPrimeiraPeca(PECA* pecas, INFO_GERAL* partida, PECA* mesa);
+void jogarPeca(PECA* pecas, INFO_GERAL* partida, PECA* mesa);
+void atualizarMesa(PECA* pecas, PECA* mesa, INFO_GERAL* partida, PECA* maoJogador, int qtdPecas);
+int JogadaInvalida(PECA* pecas, PECA* mesa, int posicaoPecaJogada, int mesaLado1, int mesaLado2);
+void organizarMesa(PECA* pecas, PECA* mesa, INFO_GERAL* partida, int posicaoPecaJogada, int mesaLado1, int mesaLado2);
+void inverterNumerosPeca(PECA* pecas, int posicao);
+void adicionarPecaNoLado1DaMesa(PECA* pecas, PECA* mesa, INFO_GERAL* partida, int posicao);
+void adicionarPecaNoLado2DaMesa(PECA* pecas, PECA* mesa, INFO_GERAL* partida, int posicao);
+
 
 //void jogarPeca(PECA* pecas, INFO_GERAL* partida);
 //void atualizarMesa(PECA* pecas, INFO_GERAL* partida, PECA* maoJogador, int qtdPecas);

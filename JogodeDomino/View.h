@@ -8,3 +8,4 @@ void imprimirMostrarMesa();
 void imprimirEscolherPeca();
 void imprimirJogador1Comeca();
 void imprimirJogador2Comeca();
+void imprimirPecaInvalida();
