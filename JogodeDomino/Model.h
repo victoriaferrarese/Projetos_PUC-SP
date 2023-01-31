@@ -20,6 +20,7 @@ struct partidaInfo{
 
     int contMesa;
     int jogadorAtual;
+    int vencedor;
 
 };
 typedef struct partidaInfo INFO_GERAL;
@@ -50,6 +51,10 @@ void organizarMesa(PECA* pecas, PECA* mesa, INFO_GERAL* partida, int posicaoPeca
 void inverterNumerosPeca(PECA* pecas, int posicao);
 void adicionarPecaNoLado1DaMesa(PECA* pecas, PECA* mesa, INFO_GERAL* partida, int posicao);
 void adicionarPecaNoLado2DaMesa(PECA* pecas, PECA* mesa, INFO_GERAL* partida, int posicao);
+int fimDeJogo(PECA* pecas, PECA* mesa, INFO_GERAL* partida);
+int jogadorSemPecas(PECA* pecas, INFO_GERAL* partida);
+int mesaTrancada(PECA* pecas, PECA* mesa, INFO_GERAL* partida);
+void contarPontosJogadores(PECA* pecas);
 
 
 //void jogarPeca(PECA* pecas, INFO_GERAL* partida);

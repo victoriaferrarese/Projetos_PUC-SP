@@ -40,3 +40,22 @@ void imprimirJogador2Comeca(){
 void imprimirPecaInvalida(){
     printf("\n A peca selecionada eh invalida!!\n");
 }
+void imprimirPilhaVazia(){
+    printf("Todas as pecas da pilha ja foram compradas");
+}
+void imprimirJogador1Vencedor(){
+    printf("PARABENS JOGADOR 1, VOCE EH O VENCEDOR DESSA PARTIDA!!\n");
+}
+void imprimirJogador2Vencedor(){
+    printf("PARABENS JOGADOR 2, VOCE EH O VENCEDOR DESSA PARTIDA!!\n");
+}
+void imprimirMesaTrancada(){
+    printf("A mesa esta trancada, não existem jogadas possiveis para que a partida prossiga!\n ");
+}
+void imprimirPontuacao(){
+    printf("Pontuacao dos jogadores calculada com êxito...\n ");
+    printf("\t\t\t\t\tPONTUACAO:\n");
+}
+void imprimirEmpate(){
+    printf("EMPATE!!\n");
+}

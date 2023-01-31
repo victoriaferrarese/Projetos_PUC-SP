@@ -93,9 +93,10 @@ void imprimirMesa(PECA* mesa, INFO_GERAL* partida){
 
     printf("\n");
     imprimirMostrarMesa();
+    printf("\n");
 
     for(int i = 0; i < partida->contMesa; i++){
-        printf("[ %d | %d ]\t ", mesa[i].numero1, mesa[i].numero2);
+        printf("[ %d | %d ]\t", mesa[i].numero1, mesa[i].numero2);
     }
     printf("\n");
 }
@@ -111,25 +112,35 @@ void trocarJogador(INFO_GERAL* partida){
 
 void comprarPeca(PECA* pecas, INFO_GERAL* partida){
 
+    int pilha = 0;
+
     for(int i = 0; i < TOTAL_PECAS; i++){
 
         if(pecas[i].status == PILHA){
-            if(partida->jogadorAtual == JOGADOR_1){
+            pilha++;
+            if(partida->jogadorAtual == JOGADOR_1){ 
                 printf("\n Voce comprou essa peca : [ %d | %d ]\n ", pecas[i].numero1, pecas[i].numero2);
                 pecas[i].status = JOGADOR_1;
                 break;
             }
-            else
+            else{
+                printf("\n Voce comprou essa peca : [ %d | %d ]\n ", pecas[i].numero1, pecas[i].numero2);
                 pecas[i].status = JOGADOR_2;
                 break;
+            }
         }
+    }
+    if(pilha == 0){
+        imprimirPilhaVazia();
+        printf("Sua vez sera passada para o outro jogador\n");
+        trocarJogador(partida);
     }
 }
 
 //O primeiro jogador eh aquele que possui a maior peca que contem os dois numeros iguais
 void encontrarPrimeiroJogador(PECA* pecas, INFO_GERAL* partida, PECA* mesa){
 
-    
+    partida->contMesa = 0;
     int posicaoPecaMaiorJ1 = encontrarPecaMaiorJogador1(pecas);
     int posicaoPecaMaiorJ2 = encontrarPecaMaiorJogador2(pecas);
     
@@ -299,6 +310,7 @@ void atualizarMesaPrimeiraJogada(PECA* pecas, PECA* mesa, INFO_GERAL* partida, P
             break;
         }
     } 
+    imprimirMesa(mesa, partida);
 }
 
 void jogarPeca(PECA* pecas, INFO_GERAL* partida, PECA* mesa){
@@ -335,13 +347,13 @@ void atualizarMesa(PECA* pecas, PECA* mesa, INFO_GERAL* partida, PECA* maoJogado
     int mesaLado2 = mesa[partida->contMesa - 1].numero2;
 
     int pecaSelecionada = escolherPeca(pecas,partida);
-//***********************************
+
     if(!JogadaInvalida(maoJogador, mesa, pecaSelecionada, mesaLado1, mesaLado2)){
         for(int i = 0; i < TOTAL_PECAS; i++){
             //localizando a peca selecionada pelo jogador no array PECA pecas
             if (pecas[i].numero1 == maoJogador[pecaSelecionada].numero1 && pecas[i].numero2 == maoJogador[pecaSelecionada].numero2){
             printf("peca escolhida localizada no array pecas, posicao: %d\n", i);
-            organizarMesa(pecas, mesa, partida, i, mesaLado1, mesaLado2); //organizar o array mesa
+            organizarMesa(pecas, mesa, partida, i, mesaLado1, mesaLado2);
             //atualizar status da peca jogada
             pecas[i].status = MESA;
 
@@ -350,8 +362,8 @@ void atualizarMesa(PECA* pecas, PECA* mesa, INFO_GERAL* partida, PECA* maoJogado
     }
     else{
         imprimirPecaInvalida();
-        jogarPeca(pecas, partida, mesa);
-
+        menuJogadorVsJogador(pecas, mesa, partida);
+    
     }
 }
 
@@ -424,10 +436,102 @@ void adicionarPecaNoLado2DaMesa(PECA* pecas, PECA* mesa, INFO_GERAL* partida, in
 
 }
 
+int fimDeJogo(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
+
+    if(jogadorSemPecas(pecas, partida) == 1 || mesaTrancada(pecas, mesa, partida) == 1){
+        return 1;
+    }
+}
+
+int jogadorSemPecas(PECA* pecas, INFO_GERAL* partida){
+
+    int contJ1 = 0;
+    int contJ2 = 0;
+
+    for(int i = 0; i < TOTAL_PECAS; i++){
+        if(pecas[i].status == JOGADOR_1)
+            contJ1++;
+        else if(pecas[i].status == JOGADOR_2)
+            contJ2++;
+    }
+
+    if(contJ1 == 0){
+        partida->vencedor = JOGADOR_1;
+        imprimirJogador1Vencedor();
+        return 1;
+    }else if(contJ2 == 0){
+        partida->vencedor = JOGADOR_2;
+        imprimirJogador2Vencedor();
+        return 1;
+    }else {
+        return 0;
+    }
+
+}
+
+//caso nao haja nenhuma possibilidade de jogada e nenhuma peca na pilha de compras a mesa esta trancada
+int mesaTrancada(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
+
+    //verifica se a pilha de compras esta vazia
+    for(int i = 0; i < TOTAL_PECAS; i++){
+        if(pecas[i].status == PILHA){
+            return 0;
+        }
+    }
+
+    int mesaLado1 = mesa[0].numero1;
+    int mesaLado2 = mesa[partida->contMesa - 1].numero2;
+
+    //verifica se algum dos jogadores possui alguma peca valida para jogar
+    for(int j = 0; j < TOTAL_PECAS; j++){
+        if(pecas[j].status == JOGADOR_1){
+            if (pecas[j].numero1 == mesaLado1 || pecas[j].numero1 == mesaLado2 || pecas[j].numero2 == mesaLado1 || pecas[j].numero2 == mesaLado2){
+                return 0;
+            }
+        }else if(pecas[j].status == JOGADOR_2){
+            if (pecas[j].numero1 == mesaLado1 || pecas[j].numero1 == mesaLado2 || pecas[j].numero2 == mesaLado1 || pecas[j].numero2 == mesaLado2){
+                return 0;
+            }
+        }
+    }
+    imprimirMesaTrancada();
+    contarPontosJogadores(pecas);
+    return 1;
+}
+
+void contarPontosJogadores(PECA* pecas){
+
+    int pontosJ1 = 0;
+    int pontosJ2 = 0;
+
+    for(int i = 0; i < TOTAL_PECAS; i++){
+        if(pecas[i].status == JOGADOR_1){
+            pontosJ1 += pecas[i].numero1;
+            pontosJ1 += pecas[i].numero2;
+
+        }
+        else if(pecas[i].status == JOGADOR_2){
+            pontosJ2 += pecas[i].numero1;
+            pontosJ2 += pecas[i].numero2;
+        }
+    }
+    imprimirPontuacao();
+    printf("Jogador 1 : %d", pontosJ1);
+    printf("Jogador 2 : %d", pontosJ2);
+
+    if(pontosJ1 < pontosJ2){
+        imprimirJogador1Vencedor();
+    } else if(pontosJ2 < pontosJ1){
+        imprimirJogador2Vencedor();
+    } else {
+        imprimirEmpate();
+    }
+
+}
 
 /* A FAZER:
 
-* atualizar imprimir mesa
+* Fim de jogo : jogador sem pecas ou mesa trancada.
 *
 
 */

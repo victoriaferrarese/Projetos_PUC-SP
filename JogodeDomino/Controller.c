@@ -67,36 +67,39 @@ void menuJogadores(PECA* pecas, INFO_GERAL* partida, PECA* mesa){
 
 void menuJogadorVsJogador(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
 
-    system("cls");
-    imprimirMesa(mesa, partida);
-    imprimirPecasjogador(pecas, partida);
+    do {
+        system("cls");
+        imprimirMesa(mesa, partida);
+        imprimirPecasjogador(pecas, partida);
 
-    int opcaoJogadorVsJogador;
-    imprimirescolherOpcaoMenu(partida);
-    imprimirMenuJogadorVsJogador();
-    scanf("%d", &opcaoJogadorVsJogador);
+        int opcaoJogadorVsJogador;
+        imprimirescolherOpcaoMenu(partida);
+        imprimirMenuJogadorVsJogador();
+        scanf("%d", &opcaoJogadorVsJogador);
 
-    switch (opcaoJogadorVsJogador){
+        switch (opcaoJogadorVsJogador){
 
-        //Jogar uma peca
-        case 1:
+            //Jogar uma peca
+            case 1:
 
-            jogarPeca(pecas, partida, mesa); 
-            trocarJogador(partida);
-            
-            break;
+                jogarPeca(pecas, partida, mesa); 
+                trocarJogador(partida);
+                
+                break;
 
-        //Comprar uma peca
-        case 2:
-            
-            comprarPeca(pecas, partida);
-            break;
+            //Comprar uma peca
+            case 2:
+                
+                comprarPeca(pecas, partida);
+                break;
 
-        default:
+            default:
 
-            imprimirOpcaoInvalida();
-            break;
-    }
+                imprimirOpcaoInvalida();
+                break;
+        }
 
-    menuJogadorVsJogador(pecas, mesa, partida);
+        menuJogadorVsJogador(pecas, mesa, partida);
+        
+    }while(!fimDeJogo);
 }
