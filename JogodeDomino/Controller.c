@@ -67,7 +67,6 @@ void menuJogadores(PECA* pecas, INFO_GERAL* partida, PECA* mesa){
 
 void menuJogadorVsJogador(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
 
-    do {
         system("cls");
         imprimirMesa(mesa, partida);
         imprimirPecasjogador(pecas, partida);
@@ -99,7 +98,7 @@ void menuJogadorVsJogador(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
                 break;
         }
 
+    if(!fimDeJogo(pecas, mesa, partida)){
         menuJogadorVsJogador(pecas, mesa, partida);
-        
-    }while(!fimDeJogo);
+    }
 }

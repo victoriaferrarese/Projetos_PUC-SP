@@ -96,7 +96,7 @@ void imprimirMesa(PECA* mesa, INFO_GERAL* partida){
     printf("\n");
 
     for(int i = 0; i < partida->contMesa; i++){
-        printf("[ %d | %d ]\t", mesa[i].numero1, mesa[i].numero2);
+        printf("[ %d | %d ]  ", mesa[i].numero1, mesa[i].numero2);
     }
     printf("\n");
 }
@@ -132,7 +132,13 @@ void comprarPeca(PECA* pecas, INFO_GERAL* partida){
     }
     if(pilha == 0){
         imprimirPilhaVazia();
-        printf("Sua vez sera passada para o outro jogador\n");
+
+        char resposta[2];
+        do{
+            printf("Sua vez sera passada para o outro jogador (digite ""ok"" para confirmar)\n");
+            scanf("%s", resposta);
+        }while(resposta[0] != 'o' && resposta[1] != 'k');
+
         trocarJogador(partida);
     }
 }
@@ -310,7 +316,6 @@ void atualizarMesaPrimeiraJogada(PECA* pecas, PECA* mesa, INFO_GERAL* partida, P
             break;
         }
     } 
-    imprimirMesa(mesa, partida);
 }
 
 void jogarPeca(PECA* pecas, INFO_GERAL* partida, PECA* mesa){
@@ -352,11 +357,9 @@ void atualizarMesa(PECA* pecas, PECA* mesa, INFO_GERAL* partida, PECA* maoJogado
         for(int i = 0; i < TOTAL_PECAS; i++){
             //localizando a peca selecionada pelo jogador no array PECA pecas
             if (pecas[i].numero1 == maoJogador[pecaSelecionada].numero1 && pecas[i].numero2 == maoJogador[pecaSelecionada].numero2){
-            printf("peca escolhida localizada no array pecas, posicao: %d\n", i);
             organizarMesa(pecas, mesa, partida, i, mesaLado1, mesaLado2);
             //atualizar status da peca jogada
             pecas[i].status = MESA;
-
             }  
         }
     }
@@ -402,14 +405,10 @@ void organizarMesa(PECA* pecas, PECA* mesa, INFO_GERAL* partida, int posicaoPeca
 }
 
 void inverterNumerosPeca(PECA* pecas, int posicao){
-    printf("antes de inverter : [%d | %d]\n", pecas[posicao].numero1, pecas[posicao].numero2);
     
     int auxiliar = pecas[posicao].numero1;
     pecas[posicao].numero1 = pecas[posicao].numero2;
     pecas[posicao].numero2 = auxiliar;
-
-    printf("depois de inverter : [%d | %d]\n", pecas[posicao].numero1, pecas[posicao].numero2);
-
 }
 
 void adicionarPecaNoLado1DaMesa(PECA* pecas, PECA* mesa, INFO_GERAL* partida, int posicao){
@@ -438,13 +437,17 @@ void adicionarPecaNoLado2DaMesa(PECA* pecas, PECA* mesa, INFO_GERAL* partida, in
 
 int fimDeJogo(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
 
-    if(jogadorSemPecas(pecas, partida) == 1 || mesaTrancada(pecas, mesa, partida) == 1){
+    if(jogadorSemPecas(pecas, partida) == 1 || mesaTrancada(pecas, mesa, partida)){
         return 1;
+        printf("fim de jogo\n");
     }
+    else
+        return 0;
 }
 
 int jogadorSemPecas(PECA* pecas, INFO_GERAL* partida){
 
+    printf("conferindo pecas jogadores...");
     int contJ1 = 0;
     int contJ2 = 0;
 
