@@ -8,6 +8,7 @@
 void imprimirMenuInicial(){
     printf("\nMENU:\n");
     printf("[1] Nova partida\n");
+    printf("[2] Carregar partida salva\n");
     printf("[3] Regras\n");
 }
 void imprimirMenuJogadores(){
@@ -18,6 +19,7 @@ void imprimirMenuJogadores(){
 void imprimirMenuJogadorVsJogador(){  
     printf("[1] Jogar uma peca\n");
     printf("[2] Comprar uma peca\n");
+    printf("[3] Sair\n");
 }
 void imprimirOpcaoInvalida(){
     printf("Opcao Invalida!!");
@@ -67,4 +69,10 @@ void imprimirRegras(){
     printf("    Se um jogador nao puder jogar, devera “comprar” do monte tantas pecas quanto forem necessarias. Se nao houver pecas no monte, passara o turno ao seguinte jogador. A partida continua com os jogadores colocando suas pecas sobre a mesa ate que se apresente alguma das seguintes situacoes:\n");
     printf("    Existem casos onde nenhum dos jogadores pode continuar a partida. Isto ocorre quando o numero das extremidades saiu 7 vezes antes. Nesse momento se diz que a partida esta fechada. Os jogadores contarao os pontos das pedras que ficaram; o jogador ou dupla com menos pontos vencem e somam-se os pontos da maneira habitual.\n");
     printf("Pode acontecer de voce ter os mesmos pontos que o jogador ou a dupla que tem avantagem, nesse caso, ganha este jogador.Via de regra: Ao terminar, vence o jogador que tiver a menor contagem total de pontos\n");
+}
+void imprimirErroBancoDeDados(){
+    printf("Desculpe, banco de dados indisponivel...\n");
+}
+void imprimirSalvarPartida(){
+    printf("Deseja salvar essa partida para continuar a joga-la depois? (s/n)");
 }

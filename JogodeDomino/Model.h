@@ -55,6 +55,9 @@ int fimDeJogo(PECA* pecas, PECA* mesa, INFO_GERAL* partida);
 int jogadorSemPecas(PECA* pecas, INFO_GERAL* partida);
 int mesaTrancada(PECA* pecas, PECA* mesa, INFO_GERAL* partida);
 void contarPontosJogadores(PECA* pecas);
+void salvarPartida(PECA* pecas, PECA* mesa, INFO_GERAL* partida);
+void sairPartida(PECA* pecas, PECA* mesa, INFO_GERAL* partida);
+void carregarPartidaSalva(PECA* pecas, PECA* mesa, INFO_GERAL* partida);
 
 
 //void jogarPeca(PECA* pecas, INFO_GERAL* partida);

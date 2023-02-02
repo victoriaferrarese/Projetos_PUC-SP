@@ -531,9 +531,70 @@ void contarPontosJogadores(PECA* pecas){
 
 }
 
+void sairPartida(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
+
+    char salvar;
+    do{
+        imprimirSalvarPartida();
+        scanf(" %c", salvar);
+
+    }while(salvar != 's' || salvar != 'n');
+    
+    //*****************************
+    printf("%d", salvar);
+    if(salvar == 's'){
+        printf("chamando salvar partida\n");
+        salvarPartida(pecas,mesa,partida);
+    }
+        
+}
+void salvarPartida(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
+
+    printf("salvando partida...");
+
+    FILE* arquivo;
+
+    arquivo = fopen("partidaSalva.txt","w");
+
+    if(arquivo == NULL){
+        imprimirErroBancoDeDados();
+        exit(1);
+    }
+    for(int i = 0; i < TOTAL_PECAS; i ++){
+
+        fprintf(arquivo, "%d", pecas[i].numero1);
+        fprintf(arquivo, "%d", pecas[i].numero2);
+        fprintf(arquivo, "%c", pecas[i].status);
+        fprintf(arquivo, "\n");
+    }
+    
+    fclose(arquivo);
+}
+
+void carregarPartidaSalva(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
+
+    FILE* arquivo;
+
+    arquivo = fopen("partidaSalva.txt","r");
+
+    printf("pecas carregadas:\n");
+
+    for(int i = 0; i < TOTAL_PECAS; i ++){
+        fscanf(arquivo, "%d", pecas[i].numero1);
+        printf("%d", pecas[i].numero1);
+        fscanf(arquivo, "%d", pecas[i].numero2);
+        printf("%d", pecas[i].numero2);
+        fscanf(arquivo, "%c", pecas[i].status);
+        printf("%c", pecas[i].status);
+        printf("\n");
+    }
+
+    fclose(arquivo);
+}
+
 /* A FAZER:
 
-* 
+* sairPartida não recebe valor
 *
 
 */

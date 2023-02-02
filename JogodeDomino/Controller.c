@@ -15,12 +15,15 @@ void menuInicial(PECA* pecas, INFO_GERAL* partida, PECA* mesa){
 
         //Nova partida
         case 1: 
+
             menuJogadores(pecas, partida, mesa);
             break;
 
         //Carregar Partida Salva
         case 2:
 
+            carregarPartidaSalva(pecas, mesa, partida);
+            menuJogadorVsJogador(pecas, mesa, partida);
             
             break;
         
@@ -96,6 +99,13 @@ void menuJogadorVsJogador(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
             case 2:
                 
                 comprarPeca(pecas, partida);
+                break;
+
+            //sair 
+            case 3:
+
+                sairPartida(pecas,mesa,partida);
+                menuInicial(pecas, partida, mesa);
                 break;
 
             default:
