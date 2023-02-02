@@ -447,7 +447,6 @@ int fimDeJogo(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
 
 int jogadorSemPecas(PECA* pecas, INFO_GERAL* partida){
 
-    printf("conferindo pecas jogadores...");
     int contJ1 = 0;
     int contJ2 = 0;
 
@@ -534,7 +533,7 @@ void contarPontosJogadores(PECA* pecas){
 
 /* A FAZER:
 
-* Fim de jogo : jogador sem pecas ou mesa trancada.
+* 
 *
 
 */

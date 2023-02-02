@@ -14,3 +14,4 @@ void imprimirPontuacao();
 void imprimirEmpate();
 void imprimirPilhaVazia();
 void imprimirMesaTrancada();
+void imprimirRegras();

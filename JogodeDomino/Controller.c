@@ -23,6 +23,12 @@ void menuInicial(PECA* pecas, INFO_GERAL* partida, PECA* mesa){
 
             
             break;
+        
+        //Regras
+        case 3:
+
+            imprimirRegras();
+            break;
 
         default :
 
