@@ -78,6 +78,7 @@ void imprimirPecasjogador(PECA* pecas, INFO_GERAL* partida){
 
     for(int i = 0; i < TOTAL_PECAS; i++){
         if(pecas[i].status == partida->jogadorAtual){
+            printf("entrou no segundo loop\n");
             printf("[ %d | %d ]\t ", pecas[i].numero1, pecas[i].numero2);
             qtdPecas++;
         }
@@ -546,7 +547,10 @@ void sairPartida(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
     }
         
 }
-//salvando as informacoes do array PECA pecas no arquivo txt. Ex: 641 (numero1 = 6, numero2 = 4, status = jogador1)
+//salvando as informacoes da partida no arquivo txt. Ex: 
+//1º linha -> PECA pecas: 641 (numero1 = 6, numero2 = 4, status = jogador1).
+//2º linha -> PECA mesa: 25 (mesa[0].numero1 = 2, mesa[0].numero2 = 5).
+//3º linha -> INFO_GERAL partida: 210 (jogadorAtual = JOGADOR_2, contMesa = 10).
 void salvarPartida(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
 
     printf("salvando partida...");
@@ -559,6 +563,8 @@ void salvarPartida(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
         imprimirErroBancoDeDados();
         exit(1);
     }
+    
+    //salvando array PECA pecas
     for(int i = 0; i < TOTAL_PECAS; i++){
 
         fprintf(arquivo, "%d", pecas[i].numero1); //salvando numero1 da peca
@@ -570,9 +576,20 @@ void salvarPartida(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
         }else
             fprintf(arquivo, "%c", pecas[i].status);
         
-        //fprintf(arquivo, "\n");
     }
+    fprintf(arquivo, "\n");
+
+    //salvando array PECA mesa
+    for(int j = 0; j < partida->contMesa; j++){
+        fprintf(arquivo, "%d", pecas[j].numero1); 
+        fprintf(arquivo, "%d", pecas[j].numero2);
+    }
+    fprintf(arquivo, "\n");
     
+    //salvando struct INFO_GERAL partida
+    fprintf(arquivo, "%d", partida->jogadorAtual);
+    fprintf(arquivo, "%d", partida->contMesa);
+
     fclose(arquivo);
 }
 
@@ -584,6 +601,7 @@ void carregarPartidaSalva(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
 
     arquivo = fopen("partidaSalva.txt","r");
 
+    //carregando array PECA pecas
     for(int i = 0; i < TOTAL_PECAS; i++){
 
         fscanf(arquivo, "%c", &pecas[i].numero1);
@@ -598,16 +616,39 @@ void carregarPartidaSalva(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
             pecas[i].status = PILHA;
         }else{
             pecas[i].status = MESA;
-        }
 
+        }
     }
 
+    fseek(arquivo, 1, SEEK_SET);
+    //carregando array PECA mesa
+    for(int j = 0; j < partida->contMesa; j++){
+        fscanf(arquivo, "%c", &pecas[j].numero1);
+        fscanf(arquivo, "%c", &pecas[j].numero2);
+    }
+
+    fseek(arquivo,2, SEEK_SET);
+    //carregando struct INFO_GERAL partida
+    char jogadorAtualSalvo;
+    fscanf(arquivo, "%c", &jogadorAtualSalvo);
+    printf("jogador atual : %c\n", jogadorAtualSalvo);
+
+    if(jogadorAtualSalvo == 1){
+        partida->jogadorAtual = JOGADOR_1;
+    } else{
+        partida->jogadorAtual = JOGADOR_2;
+    }
+
+    fscanf(arquivo, "%d", &partida->contMesa);
+
     fclose(arquivo);
+    imprimirMesa(mesa,partida);
+    //imprimirPecasjogador(pecas,partida);
 }
 
 /* A FAZER:
 
-* comitar req18 etapa 5
+* bug ao carregar o jogador atual (m)
 *
 
 */
