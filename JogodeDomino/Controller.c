@@ -76,7 +76,7 @@ void menuJogadores(PECA* pecas, INFO_GERAL* partida, PECA* mesa){
 
 void menuJogadorVsJogador(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
 
-        system("cls");
+        //system("cls");
         imprimirMesa(mesa, partida);
         imprimirPecasjogador(pecas, partida);
 

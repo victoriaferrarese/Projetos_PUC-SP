@@ -550,7 +550,8 @@ void sairPartida(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
 //salvando as informacoes da partida no arquivo txt. Ex: 
 //1º linha -> PECA pecas: 641 (numero1 = 6, numero2 = 4, status = jogador1).
 //2º linha -> PECA mesa: 25 (mesa[0].numero1 = 2, mesa[0].numero2 = 5).
-//3º linha -> INFO_GERAL partida: 210 (jogadorAtual = JOGADOR_2, contMesa = 10).
+//3º linha -> INFO_GERAL partida: 2 (jogadorAtual = JOGADOR_2).
+//4º linha -> INFO_GERAL partida: 2 (contMesa = 2).
 void salvarPartida(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
 
     printf("salvando partida...");
@@ -579,15 +580,17 @@ void salvarPartida(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
     }
     fprintf(arquivo, "\n");
 
-    //salvando array PECA mesa
+    //salvando array PECA mesa 
     for(int j = 0; j < partida->contMesa; j++){
-        fprintf(arquivo, "%d", pecas[j].numero1); 
-        fprintf(arquivo, "%d", pecas[j].numero2);
+        fprintf(arquivo, "%d", mesa[j].numero1); 
+        fprintf(arquivo, "%d", mesa[j].numero2);
     }
     fprintf(arquivo, "\n");
     
     //salvando struct INFO_GERAL partida
     fprintf(arquivo, "%d", partida->jogadorAtual);
+    printf("jogadorsalvando: %d", partida->jogadorAtual);
+    fprintf(arquivo, "\n");
     fprintf(arquivo, "%d", partida->contMesa);
 
     fclose(arquivo);
@@ -619,31 +622,33 @@ void carregarPartidaSalva(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
 
         }
     }
+    fseek(arquivo, 2, SEEK_SET);
 
-    fseek(arquivo, 1, SEEK_SET);
-    //carregando array PECA mesa
-    for(int j = 0; j < partida->contMesa; j++){
-        fscanf(arquivo, "%c", &pecas[j].numero1);
-        fscanf(arquivo, "%c", &pecas[j].numero2);
-    }
-
-    fseek(arquivo,2, SEEK_SET);
     //carregando struct INFO_GERAL partida
-    char jogadorAtualSalvo;
-    fscanf(arquivo, "%c", &jogadorAtualSalvo);
-    printf("jogador atual : %c\n", jogadorAtualSalvo);
+    fscanf(arquivo, "%c", &partida->jogadorAtual);
+    printf("jogador atual : %c\n", partida->jogadorAtual);//*******************************erro
 
-    if(jogadorAtualSalvo == 1){
+   /* if(jogadorAtualSalvo == 1){
         partida->jogadorAtual = JOGADOR_1;
     } else{
         partida->jogadorAtual = JOGADOR_2;
-    }
+    }*/
+
+    /*fseek(arquivo, 3, SEEK_SET);
 
     fscanf(arquivo, "%d", &partida->contMesa);
 
+    fseek(arquivo, 1, SEEK_SET);
+
+    //carregando array PECA mesa
+    for(int j = 0; j < partida->contMesa; j++){
+        fscanf(arquivo, "%c", &mesa[j].numero1);
+        fscanf(arquivo, "%c", &mesa[j].numero2);
+    }
+    
     fclose(arquivo);
     imprimirMesa(mesa,partida);
-    //imprimirPecasjogador(pecas,partida);
+    //imprimirPecasjogador(pecas,partida);*/
 }
 
 /* A FAZER:
