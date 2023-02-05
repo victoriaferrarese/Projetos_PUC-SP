@@ -547,11 +547,12 @@ void sairPartida(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
     }
         
 }
-//salvando as informacoes da partida no arquivo txt. Ex: 
-//1º linha -> PECA pecas: 641 (numero1 = 6, numero2 = 4, status = jogador1).
-//2º linha -> PECA mesa: 25 (mesa[0].numero1 = 2, mesa[0].numero2 = 5).
-//3º linha -> INFO_GERAL partida: 2 (jogadorAtual = JOGADOR_2).
-//4º linha -> INFO_GERAL partida: 2 (contMesa = 2).
+/*salvando as informacoes da partida no arquivo txt. Ex: 
+1º linha -> PECA pecas: 641 (numero1 = 6, numero2 = 4, status = jogador1).
+2º linha -> INFO_GERAL partida: 2 (jogadorAtual = JOGADOR_2).
+3º linha -> INFO_GERAL partida: 2 (contMesa = 2).
+4º linha -> PECA mesa: 25 (mesa[0].numero1 = 2, mesa[0].numero2 = 5).
+*/
 void salvarPartida(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
 
     printf("salvando partida...");
@@ -573,11 +574,18 @@ void salvarPartida(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
 
         //salvando o status da peca
         if(pecas[i].status == JOGADOR_1 || pecas[i].status == JOGADOR_2){
-            fprintf(arquivo, "%d", pecas[i].status); 
+            fprintf(arquivo, "%d", pecas[i].status);
         }else
             fprintf(arquivo, "%c", pecas[i].status);
-        
+
     }
+    fprintf(arquivo, "\n");
+
+    //salvando struct INFO_GERAL partida
+    fprintf(arquivo, "%d", partida->jogadorAtual);
+    printf("jogadorsalvando: %d", partida->jogadorAtual);
+    fprintf(arquivo, "\n");
+    fprintf(arquivo, "%d", partida->contMesa);
     fprintf(arquivo, "\n");
 
     //salvando array PECA mesa 
@@ -585,14 +593,18 @@ void salvarPartida(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
         fprintf(arquivo, "%d", mesa[j].numero1); 
         fprintf(arquivo, "%d", mesa[j].numero2);
     }
-    fprintf(arquivo, "\n");
-    
-    //salvando struct INFO_GERAL partida
-    fprintf(arquivo, "%d", partida->jogadorAtual);
-    printf("jogadorsalvando: %d", partida->jogadorAtual);
-    fprintf(arquivo, "\n");
-    fprintf(arquivo, "%d", partida->contMesa);
+    /*int teste1 = 8;
+    fseek(arquivo, 88, SEEK_SET);2
+    fprintf(arquivo,"%d",teste1);
 
+    int teste2 = 7;
+    fseek(arquivo, 87, SEEK_SET);
+    fprintf(arquivo,"%d",teste2);
+
+    int teste3 = 6;
+    fseek(arquivo, 86, SEEK_SET);
+    fprintf(arquivo,"%d",teste3);*/
+    
     fclose(arquivo);
 }
 
@@ -619,41 +631,46 @@ void carregarPartidaSalva(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
             pecas[i].status = PILHA;
         }else{
             pecas[i].status = MESA;
-
         }
     }
-    fseek(arquivo, 2, SEEK_SET);
 
+    fseek(arquivo, 86, SEEK_SET); //aponta para a 2º linha (byte 86) 
+
+    int jogadorAtual;
     //carregando struct INFO_GERAL partida
-    fscanf(arquivo, "%c", &partida->jogadorAtual);
-    printf("jogador atual : %c\n", partida->jogadorAtual);//*******************************erro
+    fscanf(arquivo, "%c", &jogadorAtual);
+    printf("jogador atual : %c\n", jogadorAtual);
 
-   /* if(jogadorAtualSalvo == 1){
+    if(jogadorAtual == 1){
         partida->jogadorAtual = JOGADOR_1;
     } else{
         partida->jogadorAtual = JOGADOR_2;
-    }*/
+    }
 
-    /*fseek(arquivo, 3, SEEK_SET);
+    fseek(arquivo, 87, SEEK_SET); //aponta para a 3º linha do arquivo (byte 87)
 
     fscanf(arquivo, "%d", &partida->contMesa);
+    printf("contMesa: %d\n", partida->contMesa);
 
-    fseek(arquivo, 1, SEEK_SET);
+    fseek(arquivo, 88, SEEK_SET); //aponta para a 4º linha do arquivo (byte 88)
 
+    int teste;
     //carregando array PECA mesa
-    for(int j = 0; j < partida->contMesa; j++){
-        fscanf(arquivo, "%c", &mesa[j].numero1);
+    for(int j = 0; j < partida->contMesa; j++){ //************************
+        fscanf(arquivo, "%d", &teste);
+        printf("teste: %d", teste);
         fscanf(arquivo, "%c", &mesa[j].numero2);
+        //printf("mesa peca %d: numero2 %c", j, mesa[j].numero2);
     }
     
     fclose(arquivo);
     imprimirMesa(mesa,partida);
-    //imprimirPecasjogador(pecas,partida);*/
+    //imprimirPecasjogador(pecas,partida);
 }
 
 /* A FAZER:
 
-* bug ao carregar o jogador atual (m)
+* bug ao carregar o array mesa
 *
 
 */
