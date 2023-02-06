@@ -586,16 +586,17 @@ void salvarPartida(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
     printf("jogadorsalvando: %d", partida->jogadorAtual);
     fprintf(arquivo, "\n");
     fprintf(arquivo, "%d", partida->contMesa);
-    fprintf(arquivo, "\n");
 
     //salvando array PECA mesa 
     for(int j = 0; j < partida->contMesa; j++){
+        fprintf(arquivo, "\n");
         fprintf(arquivo, "%d", mesa[j].numero1); 
+        fprintf(arquivo, "\n");
         fprintf(arquivo, "%d", mesa[j].numero2);
     }
-    /*int teste1 = 8;
-    fseek(arquivo, 88, SEEK_SET);2
-    fprintf(arquivo,"%d",teste1);
+    /*char teste1 = 'z';
+    fseek(arquivo, 96, SEEK_SET);
+    fprintf(arquivo,"%c",teste1);
 
     int teste2 = 7;
     fseek(arquivo, 87, SEEK_SET);
@@ -652,15 +653,23 @@ void carregarPartidaSalva(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
     fscanf(arquivo, "%d", &partida->contMesa);
     printf("contMesa: %d\n", partida->contMesa);
 
-    fseek(arquivo, 88, SEEK_SET); //aponta para a 4º linha do arquivo (byte 88)
-
-    int teste;
+    int proximaLinha = 91;
+    fseek(arquivo, proximaLinha, SEEK_SET); //aponta para a 4º linha do arquivo (byte 92)
     //carregando array PECA mesa
-    for(int j = 0; j < partida->contMesa; j++){ //************************
-        fscanf(arquivo, "%d", &teste);
-        printf("teste: %d", teste);
-        fscanf(arquivo, "%c", &mesa[j].numero2);
-        //printf("mesa peca %d: numero2 %c", j, mesa[j].numero2);
+    for(int j = 0; j < partida->contMesa; j++){ 
+
+        proximaLinha+2;
+        printf("proxima linha%d\n", proximaLinha);
+        fseek(arquivo, proximaLinha, SEEK_SET); 
+        fscanf(arquivo, "%d", &mesa[j].numero1);
+
+        proximaLinha+2;
+        printf("proxima linha:%d\n", proximaLinha);
+        fseek(arquivo, proximaLinha, SEEK_SET);
+        fscanf(arquivo, "%d", &mesa[j].numero2);
+
+        printf("mesa numero 1: %d\n", mesa[j].numero1);
+        printf("mesa numero 2: %d\n", mesa[j].numero2);
     }
     
     fclose(arquivo);
@@ -670,7 +679,7 @@ void carregarPartidaSalva(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
 
 /* A FAZER:
 
-* bug ao carregar o array mesa
+* carregar mesa
 *
 
 */
