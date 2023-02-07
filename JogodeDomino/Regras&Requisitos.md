@@ -43,10 +43,10 @@ Os seguintes requisitos deverão ser implementados durante o desenvolvimento do 
 
 **Etapa 5: Arquivos em C**
 * REQ18: O sistema deverá permitir ao usuário salvar o jogo em um arquivo a qualquer momento, para poder continuar jogando numa outra ocasião. 
-* REQ19: O sistema deverá permitir ao usuário carregar um jogo que foi salvo em arquivopara prosseguir jogando.
+* REQ19: O sistema deverá permitir ao usuário carregar um jogo que foi salvo em arquivo para prosseguir jogando.
 
 **Etapa 6: Computador Jogador**
-* REQ20: No caso de apenas um jogadorjogando contra o computador, o sistema deverá simular o comportamento inteligente como umjogador real por meio da implementação das regras do jogo no código em C. 
+* REQ20: No caso de apenas um jogador contra o computador, o sistema deverá simular o comportamento inteligente como umjogador real por meio da implementação das regras do jogo no código em C. 
 
 ### Estrutura de Dados do Jogos
 O dominó deverá ser implementado usando tipo agregado de homogêneo (*vetor*) e cada peça deverá ser devidamente representada com as informações necessárias para o contexto do problema. Deve-se criar um tipo agregado heterogêneo para representar cada peça do jogos e no vetor dominó  será  armazenado  as  informações  de  uma  peça.
