@@ -65,6 +65,9 @@ void menuJogadores(PECA* pecas, INFO_GERAL* partida, PECA* mesa){
         //jogador vs IA
         case 2:
             iniciarJogo(pecas);
+            encontrarPrimeiroJogador(pecas, partida, mesa);
+            trocarJogador(partida);
+            menuJogadorVsIa(pecas, mesa, partida);
             break;
 
         default:
@@ -76,7 +79,7 @@ void menuJogadores(PECA* pecas, INFO_GERAL* partida, PECA* mesa){
 
 void menuJogadorVsJogador(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
 
-        //system("cls");
+        system("cls");
         imprimirMesa(mesa, partida);
         imprimirPecasjogador(pecas, partida);
 
@@ -118,3 +121,49 @@ void menuJogadorVsJogador(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
         menuJogadorVsJogador(pecas, mesa, partida);
     }
 }
+
+void menuJogadorVsIa(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
+
+        system("cls");
+        imprimirMesa(mesa, partida);
+        imprimirPecasjogador(pecas, partida);
+
+        int opcaoJogadorVsJogador;
+        imprimirescolherOpcaoMenu(partida);
+        imprimirMenuJogadorVsJogador();
+        scanf("%d", &opcaoJogadorVsJogador);
+
+        switch (opcaoJogadorVsJogador){
+
+            //Jogar uma peca
+            case 1:
+
+                jogarPeca(pecas, partida, mesa); 
+                trocarJogador(partida);
+                
+                break;
+
+            //Comprar uma peca
+            case 2:
+                
+                comprarPeca(pecas, partida);
+                break;
+
+            //sair 
+            case 3:
+
+                sairPartida(pecas,mesa,partida);
+                menuInicial(pecas, partida, mesa);
+                break;
+
+            default:
+
+                imprimirOpcaoInvalida();
+                break;
+        }
+
+    if(!fimDeJogo(pecas, mesa, partida)){
+        menuJogadorVsJogador(pecas, mesa, partida);
+    }
+}
+

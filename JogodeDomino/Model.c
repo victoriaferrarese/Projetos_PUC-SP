@@ -256,14 +256,22 @@ void imprimirescolherOpcaoMenu(INFO_GERAL* partida){
 
 
 int escolherPeca(PECA* pecas, INFO_GERAL* partida){
-
-    int pecaEscolhida;
     
-    imprimirEscolherPeca();
-    scanf("%d", &pecaEscolhida);
+    if(partida->jogadorAtual == IA){
 
-    return pecaEscolhida;
+        int pecaEscolhidaIA;
+        pecaEscolhidaIA = jogarPecaIA(); //******************************
 
+        return pecaEscolhidaIA;
+    }else{
+        int pecaEscolhida;
+    
+        imprimirEscolherPeca();
+        scanf("%d", &pecaEscolhida);
+
+        return pecaEscolhida;
+    }
+    
 }
 
 //criando um array para a mao de cada um dos jogadores 
@@ -547,12 +555,25 @@ void sairPartida(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
     }
         
 }
-/*salvando as informacoes da partida no arquivo txt. Ex: 
+
+
+
+/* A FAZER:
+
+* jogarPecaIA();
+*
+
+*/
+
+
+
+/* EM DESENVOLVIMENTO
+salvando as informacoes da partida no arquivo txt. Ex: 
 1º linha -> PECA pecas: 641 (numero1 = 6, numero2 = 4, status = jogador1).
 2º linha -> INFO_GERAL partida: 2 (jogadorAtual = JOGADOR_2).
 3º linha -> INFO_GERAL partida: 2 (contMesa = 2).
 4º linha -> PECA mesa: 25 (mesa[0].numero1 = 2, mesa[0].numero2 = 5).
-*/
+
 void salvarPartida(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
 
     printf("salvando partida...");
@@ -570,13 +591,17 @@ void salvarPartida(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
     for(int i = 0; i < TOTAL_PECAS; i++){
 
         fprintf(arquivo, "%d", pecas[i].numero1); //salvando numero1 da peca
+        fprintf(arquivo, "\n");
         fprintf(arquivo, "%d", pecas[i].numero2); //salvando numero2 da peca
+        fprintf(arquivo, "\n");
 
         //salvando o status da peca
         if(pecas[i].status == JOGADOR_1 || pecas[i].status == JOGADOR_2){
             fprintf(arquivo, "%d", pecas[i].status);
+            fprintf(arquivo, "\n");
         }else
             fprintf(arquivo, "%c", pecas[i].status);
+            fprintf(arquivo, "\n");
 
     }
     fprintf(arquivo, "\n");
@@ -594,18 +619,6 @@ void salvarPartida(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
         fprintf(arquivo, "\n");
         fprintf(arquivo, "%d", mesa[j].numero2);
     }
-    /*char teste1 = 'z';
-    fseek(arquivo, 96, SEEK_SET);
-    fprintf(arquivo,"%c",teste1);
-
-    int teste2 = 7;
-    fseek(arquivo, 87, SEEK_SET);
-    fprintf(arquivo,"%d",teste2);
-
-    int teste3 = 6;
-    fseek(arquivo, 86, SEEK_SET);
-    fprintf(arquivo,"%d",teste3);*/
-    
     fclose(arquivo);
 }
 
@@ -615,14 +628,14 @@ void carregarPartidaSalva(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
     
     FILE* arquivo;
 
-    arquivo = fopen("partidaSalva.txt","r");
+    arquivo = fopen("partidaSalva.txt","r+");
 
     //carregando array PECA pecas
     for(int i = 0; i < TOTAL_PECAS; i++){
 
-        fscanf(arquivo, "%c", &pecas[i].numero1);
-        fscanf(arquivo, "%c", &pecas[i].numero2);
-        fscanf(arquivo, "%c", &status);
+        fscanf(arquivo, "%d", &pecas[i].numero1);
+        fscanf(arquivo, "%d", &pecas[i].numero2);
+        fscanf(arquivo, "%d", &status);
 
         if(status == 1){
             pecas[i].status = JOGADOR_1;
@@ -658,28 +671,21 @@ void carregarPartidaSalva(PECA* pecas, PECA* mesa, INFO_GERAL* partida){
     //carregando array PECA mesa
     for(int j = 0; j < partida->contMesa; j++){ 
 
-        proximaLinha+2;
-        printf("proxima linha%d\n", proximaLinha);
+        proximaLinha++;
         fseek(arquivo, proximaLinha, SEEK_SET); 
         fscanf(arquivo, "%d", &mesa[j].numero1);
-
-        proximaLinha+2;
-        printf("proxima linha:%d\n", proximaLinha);
-        fseek(arquivo, proximaLinha, SEEK_SET);
         fscanf(arquivo, "%d", &mesa[j].numero2);
 
         printf("mesa numero 1: %d\n", mesa[j].numero1);
         printf("mesa numero 2: %d\n", mesa[j].numero2);
     }
+
+
     
     fclose(arquivo);
     imprimirMesa(mesa,partida);
     //imprimirPecasjogador(pecas,partida);
 }
-
-/* A FAZER:
-
-* carregar mesa
-*
-
 */
+
+

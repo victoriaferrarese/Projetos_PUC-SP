@@ -3,6 +3,7 @@
 #define PILHA 'p'
 #define JOGADOR_1 1
 #define JOGADOR_2 2
+#define IA 3
 
 #ifndef _PECA_
 #define _PECA_
@@ -55,9 +56,10 @@ int fimDeJogo(PECA* pecas, PECA* mesa, INFO_GERAL* partida);
 int jogadorSemPecas(PECA* pecas, INFO_GERAL* partida);
 int mesaTrancada(PECA* pecas, PECA* mesa, INFO_GERAL* partida);
 void contarPontosJogadores(PECA* pecas);
-void salvarPartida(PECA* pecas, PECA* mesa, INFO_GERAL* partida);
+//void salvarPartida(PECA* pecas, PECA* mesa, INFO_GERAL* partida);
 void sairPartida(PECA* pecas, PECA* mesa, INFO_GERAL* partida);
-void carregarPartidaSalva(PECA* pecas, PECA* mesa, INFO_GERAL* partida);
+//void carregarPartidaSalva(PECA* pecas, PECA* mesa, INFO_GERAL* partida);
+void denifinirJogadorAtual(INFO_GERAL* partida);
 
 
 //void jogarPeca(PECA* pecas, INFO_GERAL* partida);
